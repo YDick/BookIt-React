@@ -27,9 +27,8 @@ class GoogleMaps extends Component {
     var userAd = json.users[1].address
      
     console.log("hey address", json.users[1].address.address_line1,userAd.address_line2, userAd.city )
-      // this.setState({lat: json.address.geo.lat,
-      // lng:json.address.geo.lng})
-
+  
+           
       const googleMapsClient = require('@google/maps').createClient({
         key: 'AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU',
         Promise: Promise
