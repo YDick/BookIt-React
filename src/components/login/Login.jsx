@@ -45,7 +45,7 @@ export default class Login extends Component {
     }).then(e=>e.json())
     .then(data=> {
         console.log('Success:', data);
-        sessionStorage.setItem("JWT", JSON.stringify(data));
+        sessionStorage.setItem("JWT", data.jwt);
       })
     .catch(error=>console.error('Error:', error));
   }
