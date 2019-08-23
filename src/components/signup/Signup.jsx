@@ -23,7 +23,7 @@ export default class Signup extends Component {
       validateForm() {
         return (
           this.state.email.length > 0 &&
-          this.state.email.length.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
+          this.state.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
           this.state.password.length > 6 &&
           this.state.password === this.state.confirmPassword
         );
