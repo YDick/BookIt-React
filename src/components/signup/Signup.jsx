@@ -5,17 +5,15 @@ import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 // https://flaviocopes.com/react-forms/
 
 
-export default class Signup extends Component{
+export default class Signup extends Component {
     constructor(props) {
         super(props);
     
         this.state = {
-          isLoading: false,
           email: "",
           password: "",
           confirmPassword: "",
           confirmationCode: "",
-          newUser: null
         };
       }
 
@@ -35,20 +33,16 @@ export default class Signup extends Component{
 
     handleSubmit = event => {
         event.preventDefault()
-        this.setState({
-            newUser: {
-                name: this.state.name,
-                email: this.state.email,
-                password: this.state.password
-            }
-        })
-        console.log(this.state.newUser)
 
         fetch("http://book-it.herokuapp.com/api/v1/users",{
             method: 'POST',
             body:
             JSON.stringify(
-            {"user": this.state.newUser}
+            {"user":  {               
+            "name": this.state.name,
+            "email": this.state.email,
+            "password": this.state.password}
+            }
             ),
             headers:{
               'Content-Type': 'application/json'
@@ -60,10 +54,6 @@ export default class Signup extends Component{
           .catch(error=>console.error('Error:', error));
         }
       
-    
-
-
-
 
     render(){return (
       <div className="Signup">
