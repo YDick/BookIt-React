@@ -31,7 +31,7 @@ class GoogleMaps extends Component {
     method: 'GET',
     headers:{
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer'+ sessionStorage.getItem("JWT")
+      'Authorization': 'Bearer ' + sessionStorage.JWT   
     }
   }).then(e=>e.json())
   .then(data=> {

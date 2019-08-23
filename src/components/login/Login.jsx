@@ -45,14 +45,14 @@ export default class Login extends Component {
     }).then(e=>e.json())
     .then(data=> {
         console.log('Success:', data);
-        sessionStorage.setItem("JWT", JSON.stringify(data));
+        sessionStorage.setItem("JWT", data.jwt);
       })
     .catch(error=>console.error('Error:', error));
   }
 
 
   deleteUser = e => {
-    fetch("http://book-it.herokuapp.com/api/v1/users/9",{
+    fetch("http://book-it.herokuapp.com/api/v1/users/13",{
       method: 'DELETE',
       headers:{
         'Content-Type': 'application/json',
