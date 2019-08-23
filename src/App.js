@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-<<<<<<< HEAD
 import MainPage from './components/pages/mainPage'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Login from "./components/login/Login";
