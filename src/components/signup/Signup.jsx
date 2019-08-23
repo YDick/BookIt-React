@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 
+// Importing the Bulma CSS library for form
+import 'bulma/css/bulma.css';
+
 
 // https://flaviocopes.com/react-forms/
 
@@ -20,7 +23,8 @@ export default class Signup extends Component {
       validateForm() {
         return (
           this.state.email.length > 0 &&
-          this.state.password.length > 0 &&
+          this.state.email.length.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
+          this.state.password.length > 6 &&
           this.state.password === this.state.confirmPassword
         );
       }
