@@ -1,8 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+<<<<<<< HEAD
 import MainPage from './components/pages/mainPage'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Login from "./components/login/Login";
 
 
 class App extends React.Component  {
@@ -20,10 +21,17 @@ render() {
       exact render ={props => (
       <MainPage/>
       )}/>
+
+<Router>
+          <Route path="/login" exact component={Login} />
+        </Router>
+
     </Switch>
     </Router>
 )}
       
+
+
 }
 
 export default App;
