@@ -15,48 +15,74 @@ class GoogleMaps extends Component {
   }
 
   componentDidMount() {
+  //   fetch("https://book-it.herokuapp.com/api/v1/current",{
+  //     headers:{
+  //       'Content-Type': 'application/json',
+  //       'Authorization': 'Bearer'+ sessionStorage.getItem("JWT")
+  //     }
+  //   })
+
+  //   .then(response => response.json())
+  //   .then(json => {
+  //     console.log(json)
+
+  //   })
+  fetch("https://book-it.herokuapp.com/api/v1/current",{
+    method: 'GET',
+    headers:{
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer'+ sessionStorage.getItem("JWT")
+    }
+  }).then(e=>e.json())
+  .then(data=> {
+      console.log('Success:', data);
+    })
+  .catch(error=>console.error('Error:', error));
+ 
+
     
-    fetch("https://book-it.herokuapp.com/api/v1/users")
-      .then(response => response.json())
-      .then(json => {
-        console.log("user", json.users[1].address);
-        var userAd = json.users[1].address;
+    // fetch("https://book-it.herokuapp.com/api/v1/users")
+    //   .then(response => response.json())
+    //   .then(json => {
+    //     console.log("JSON",json)
+    //     console.log("user", json.users[0].address);
+    //     var userAd = json.users[0].address;
 
-        console.log(
-          "hey address",
-          json.users[1].address.address_line1,
-          userAd.address_line2,
-          userAd.city
-        );
+    //     console.log(
+    //       "hey address",
+    //       json.users[0].address.address_line1,
+    //       userAd.address_line2,
+    //       userAd.city
+    //     );
 
-        const googleMapsClient = require("@google/maps").createClient({
-          key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
-          Promise: Promise
-        });
+    //     const googleMapsClient = require("@google/maps").createClient({
+    //       key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
+    //       Promise: Promise
+    //     });
 
-        googleMapsClient
-          .geocode({
-            address: `${(json.users[1].address.address_line1,
-            userAd.address_line2,
-            userAd.city)}`
-          })
-          .asPromise()
-          .then(response => {
-            console.log(response.json.results);
-            this.setState(
-              {
-                lat: response.json.results[0].geometry.location.lat,
-                lng: response.json.results[0].geometry.location.lng
-              },
-              () => {
-                console.log("State::::", this.state.lat);
-              }
-            );
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      });
+    //     googleMapsClient
+    //       .geocode({
+    //         address: `${(json.users[0].address.address_line1,
+    //         userAd.address_line2,
+    //         userAd.city)}`
+    //       })
+    //       .asPromise()
+    //       .then(response => {
+    //         console.log(response.json.results);
+    //         this.setState(
+    //           {
+    //             lat: response.json.results[0].geometry.location.lat,
+    //             lng: response.json.results[0].geometry.location.lng
+    //           },
+    //           () => {
+    //             console.log("State::::", this.state.lat);
+    //           }
+    //         );
+    //       })
+    //       .catch(err => {
+    //         console.log(err);
+    //       });
+    //   });
   }
 
   onMarkerClick = (props, marker, e) =>

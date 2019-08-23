@@ -6,9 +6,7 @@ function mainPage(props) {
   return (
     <React.Fragment>
       <Container>
-        {/* <Row>
-<Col md={{ span: 5, offset: 5 }}> <Map/> </Col>    
-</Row> */}
+    
         <h1>hey</h1>
         <div style={{
             display:"flex",
