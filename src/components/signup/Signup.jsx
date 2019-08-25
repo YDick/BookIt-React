@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import { Button, FormGroup, FormControl, FormLabel, Col, Row, Form } from "react-bootstrap";
 
 // Importing the Bulma CSS library for form
-import 'bulma/css/bulma.css';
+// import 'bulma/css/bulma.css';
 
 
 // https://flaviocopes.com/react-forms/
@@ -13,14 +13,25 @@ export default class Signup extends Component {
         super(props);
     
         this.state = {
+          name: '',
           email: "",
           password: "",
           confirmPassword: "",
-          confirmationCode: "",
+          address: {
+            address_line1: '',
+            city: '',
+            province: '',
+            postal_code: '',
+            country: ''
+          }
         };
       }
 
       validateForm() {
+        if (this.state.password !== this.state.confirmPassword) {
+          alert('passwords do not match')
+        }
+
         return (
           this.state.email.length > 0 &&
           this.state.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
@@ -34,9 +45,26 @@ export default class Signup extends Component {
           [event.target.id]: event.target.value
         });
       }
+      handleAddressChange = event => {
+        this.setState({address: {
+          [event.target.id]: event.target.value
+           }
+        });
+      }
 
     handleSubmit = event => {
-        event.preventDefault()
+        event.preventDefault();
+        console.log(
+          JSON.stringify(
+            {"user":  {               
+              "name": this.state.name,
+              "email": this.state.email,
+              "password": this.state.password,
+              "address": this.state.address
+                }
+              }
+          )
+        )
 
         fetch("http://book-it.herokuapp.com/api/v1/users",{
             method: 'POST',
@@ -63,7 +91,7 @@ export default class Signup extends Component {
       <div className="Signup">
           <h1>Sign Up Here!</h1>
 
-        <form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
 
         <FormGroup controlId="name">
             <FormLabel>Name</FormLabel>
@@ -87,6 +115,65 @@ export default class Signup extends Component {
             />
           </FormGroup>
 
+          <FormGroup controlId="address" >
+            <FormLabel>Address</FormLabel>
+            <FormControl
+              autoFocus
+              type="text"
+              placeholder="123 Something Rd."
+           value={this.state.address.address_line1}
+            onChange={this.handleAddressChange}
+            />
+          </FormGroup>
+
+      <Form.Row>
+          <Form.Group controlId="city" as={Col}>
+            <Form.Label>City</Form.Label>
+            <Form.Control
+              autoFocus
+              type="text"
+              placeholder="Toronto"
+           value={this.state.address.city}
+            onChange={this.handleAddressChange}
+            />
+          </Form.Group>
+
+          <Form.Group controlId="prov" as={Col}>
+            <Form.Label>Province</Form.Label>
+            <Form.Control
+              autoFocus
+              type="text"
+              placeholder="ON"
+           value={this.state.address.province}
+            onChange={this.handleAddressChange}
+            />
+          </Form.Group>
+
+
+          <Form.Group controlId="country" as={Col}>
+            <Form.Label>Country</Form.Label>
+            <Form.Control
+              autoFocus
+              type="text"
+              placeholder="Canada"
+           value={this.state.address.country}
+            onChange={this.handleAddressChange}
+            />
+          </Form.Group>
+      </Form.Row>
+
+          <FormGroup controlId="postal_code" >
+            <FormLabel>Postal Code</FormLabel>
+            <FormControl
+              autoFocus
+              type="text"
+              placeholder="M5N2S5"
+           value={this.state.address.postal_code}
+            onChange={this.handleAddressChange}
+            />
+          </FormGroup>
+
+
           <FormGroup controlId="password">
             <FormLabel>Password</FormLabel>
             <FormControl
@@ -107,14 +194,15 @@ export default class Signup extends Component {
             />
           </FormGroup>
 
-          <Button
+          <button
             block
             disabled={!this.validateForm()}
             type="submit"
+            className = "button is-link"
           >
             Sign Up!
-          </Button>
-        </form>
+          </button> 
+        </Form>
 
       </div>
     );
