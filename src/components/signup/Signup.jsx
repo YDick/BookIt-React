@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Button, FormGroup, FormControl, FormLabel, Col, Row, Form } from "react-bootstrap";
+import { Button, FormGroup, FormControl, FormLabel, Col, Form } from "react-bootstrap";
 
+import '../login/Login.css'
 // Importing the Bulma CSS library for form
 // import 'bulma/css/bulma.css';
 
@@ -17,20 +18,15 @@ export default class Signup extends Component {
           email: "",
           password: "",
           confirmPassword: "",
-          address: {
             address_line1: '',
             city: '',
             province: '',
             postal_code: '',
-            country: ''
-          }
+            country: '',
         };
       }
 
       validateForm() {
-        if (this.state.password !== this.state.confirmPassword) {
-          alert('passwords do not match')
-        }
 
         return (
           this.state.email.length > 0 &&
@@ -45,22 +41,45 @@ export default class Signup extends Component {
           [event.target.id]: event.target.value
         });
       }
-      handleAddressChange = event => {
+      handleAddress = event => {
+        var address_line1 = this.state.address_line1;
+        var city = this.state.city;
+        var province = this.state.province;
+        var postal_code = this.state.postal_code;
+        var country = this.state.country;
+
         this.setState({address: {
-          [event.target.id]: event.target.value
+          address_line1: address_line1,
+          city: city,
+          province: province,
+          postal_code: postal_code,
+          country: country
            }
         });
       }
 
     handleSubmit = event => {
         event.preventDefault();
+        this.handleAddress();
+        var address_line1 = this.state.address_line1;
+        var city = this.state.city;
+        var province = this.state.province;
+        var postal_code = this.state.postal_code;
+        var country = this.state.country;
+
         console.log(
           JSON.stringify(
             {"user":  {               
               "name": this.state.name,
               "email": this.state.email,
               "password": this.state.password,
-              "address": this.state.address
+              "address": {
+                address_line1: address_line1,
+                city: city,
+                province: province,
+                postal_code: postal_code,
+                country: country
+              }
                 }
               }
           )
@@ -70,11 +89,19 @@ export default class Signup extends Component {
             method: 'POST',
             body:
             JSON.stringify(
-            {"user":  {               
-            "name": this.state.name,
-            "email": this.state.email,
-            "password": this.state.password}
-            }
+              {"user":  {               
+                "name": this.state.name,
+                "email": this.state.email,
+                "password": this.state.password,
+                "address": {
+                  address_line1: address_line1,
+                  city: city,
+                  province: province,
+                  postal_code: postal_code,
+                  country: country
+                }
+                  }
+                }
             ),
             headers:{
               'Content-Type': 'application/json'
@@ -115,14 +142,14 @@ export default class Signup extends Component {
             />
           </FormGroup>
 
-          <FormGroup controlId="address" >
+          <FormGroup controlId="address_line1" >
             <FormLabel>Address</FormLabel>
             <FormControl
               autoFocus
               type="text"
               placeholder="123 Something Rd."
-           value={this.state.address.address_line1}
-            onChange={this.handleAddressChange}
+           value={this.state.address_line1}
+            onChange={this.handleChange}
             />
           </FormGroup>
 
@@ -133,19 +160,19 @@ export default class Signup extends Component {
               autoFocus
               type="text"
               placeholder="Toronto"
-           value={this.state.address.city}
-            onChange={this.handleAddressChange}
+           value={this.state.city}
+            onChange={this.handleChange}
             />
           </Form.Group>
 
-          <Form.Group controlId="prov" as={Col}>
+          <Form.Group controlId="province" as={Col}>
             <Form.Label>Province</Form.Label>
             <Form.Control
               autoFocus
               type="text"
               placeholder="ON"
-           value={this.state.address.province}
-            onChange={this.handleAddressChange}
+           value={this.state.province}
+            onChange={this.handleChange}
             />
           </Form.Group>
 
@@ -156,8 +183,8 @@ export default class Signup extends Component {
               autoFocus
               type="text"
               placeholder="Canada"
-           value={this.state.address.country}
-            onChange={this.handleAddressChange}
+           value={this.state.country}
+            onChange={this.handleChange}
             />
           </Form.Group>
       </Form.Row>
@@ -168,8 +195,8 @@ export default class Signup extends Component {
               autoFocus
               type="text"
               placeholder="M5N2S5"
-           value={this.state.address.postal_code}
-            onChange={this.handleAddressChange}
+           value={this.state.postal_code}
+            onChange={this.handleChange}
             />
           </FormGroup>
 
@@ -194,14 +221,14 @@ export default class Signup extends Component {
             />
           </FormGroup>
 
-          <button
+          <Button
             block
             disabled={!this.validateForm()}
             type="submit"
             className = "button is-link"
           >
             Sign Up!
-          </button> 
+          </Button> 
         </Form>
 
       </div>
