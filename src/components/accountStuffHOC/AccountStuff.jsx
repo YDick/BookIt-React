@@ -10,7 +10,7 @@ const AccountStuff= (props) => {
 
     if(sessionStorage.JWT){
         account = <React.Fragment>
-                    <Logout/> | 
+                    <Logout logOut={props.logOut}/> | 
                     <Link className="link" to="/"> My Account</Link>
                   </React.Fragment>;
     }

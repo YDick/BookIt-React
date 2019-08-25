@@ -22,7 +22,7 @@ class App extends React.Component {
       loggedIn: true
     })
   }
-  
+
   logOut=()=>{
     this.setState({
       loggedIn: false
@@ -34,7 +34,7 @@ class App extends React.Component {
       <div className="App">
    
         <Router>
-          <AccountStuff />
+          <AccountStuff logOut={this.logOut}/>
           <Route path="/login" exact 
                  render={props => <Login {...props} logIn={this.logIn} />} />
           <Route path="/signup" exact component={Signup} />
