@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, FormLabel, Col, Form } from "react-bootstrap";
 
 import '../login/Login.css'
-// Importing the Bulma CSS library for form
-// import 'bulma/css/bulma.css';
 
 
 // https://flaviocopes.com/react-forms/
@@ -41,26 +39,10 @@ export default class Signup extends Component {
           [event.target.id]: event.target.value
         });
       }
-      handleAddress = event => {
-        var address_line1 = this.state.address_line1;
-        var city = this.state.city;
-        var province = this.state.province;
-        var postal_code = this.state.postal_code;
-        var country = this.state.country;
-
-        this.setState({address: {
-          address_line1: address_line1,
-          city: city,
-          province: province,
-          postal_code: postal_code,
-          country: country
-           }
-        });
-      }
 
     handleSubmit = event => {
         event.preventDefault();
-        this.handleAddress();
+        
         var address_line1 = this.state.address_line1;
         var city = this.state.city;
         var province = this.state.province;
