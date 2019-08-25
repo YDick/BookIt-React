@@ -1,11 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
+import {Link} from 'react-router-dom'
 
 function Logout(){
+
+   let logout = () => {
+        sessionStorage.clear();
+
+    }
     
     return(
-        <div onClick={e=>sessionStorage.clear()}>
-            logout
-        </div>
+        <Link onClick={e=>logout()}>
+            Logout
+        </Link>
     )
 }
 

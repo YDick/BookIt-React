@@ -46,6 +46,9 @@ export default class Login extends Component {
     .then(data=> {
         console.log('Success:', data);
         sessionStorage.setItem("JWT", data.jwt);
+        this.props.logIn();
+        this.props.history.push(`/`);
+
       })
     .catch(error=>console.error('Error:', error));
   }
@@ -84,7 +87,7 @@ export default class Login extends Component {
           </Button>
         </form>
 
-        <Link className="link" to="/signup">Don't have an account? <span className="link-signup">Signup</span></Link>
+        <Link className="link" to="/signup">Don't have an account? <span className="link-signup">Sign up</span></Link>
       </div>
     );
   }
