@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import Form from "../mapForm/form";
 
 class GoogleMaps extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -10,79 +12,86 @@ class GoogleMaps extends Component {
       lng: null,
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: {}
+      selectedPlace: {},
+      streetAddress: "",
+      city: "",
+      postalCode: ""
     };
   }
 
-  componentDidMount() {
-  //   fetch("https://book-it.herokuapp.com/api/v1/current",{
-  //     headers:{
-  //       'Content-Type': 'application/json',
-  //       'Authorization': 'Bearer'+ sessionStorage.getItem("JWT")
-  //     }
-  //   })
+  onInputChanges = data => {
+    switch (Object.keys(data)[0]) {
+      case "streetAddress":
+        this.setState({ streetAddress: data.streetAddress });
+        break;
+      case "city":
+        this.setState({ city: data.city });
+        break;
+      case "postalCode":
+        this.setState({ postalCode: data.postalCode });
+        break;
 
-  //   .then(response => response.json())
-  //   .then(json => {
-  //     console.log(json)
-
-  //   })
-  fetch("https://book-it.herokuapp.com/api/v1/current",{
-    method: 'GET',
-    headers:{
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + sessionStorage.JWT   
+      default:
+        break;
     }
-  }).then(e=>e.json())
-  .then(data=> {
-      console.log('Success:', data);
+  };
+
+
+  componentDidMount() {
+    fetch("https://book-it.herokuapp.com/api/v1/current", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.JWT
+      }
     })
-  .catch(error=>console.error('Error:', error));
- 
+      .then(e => e.json())
+      .then(data => {
+        console.log("Success:", data.current_user.address);
+        var loginAddress = data.current_user.address;
+        console.log("var", loginAddress);
 
-    
-    // fetch("https://book-it.herokuapp.com/api/v1/users")
-    //   .then(response => response.json())
-    //   .then(json => {
-    //     console.log("JSON",json)
-    //     console.log("user", json.users[0].address);
-    //     var userAd = json.users[0].address;
+        // To ensure form comes up if user has no location in db
+        // if (loginAddress === null) {
+        //   this.setState({ currentUserLocation: true });
+        // }
 
-    //     console.log(
-    //       "hey address",
-    //       json.users[0].address.address_line1,
-    //       userAd.address_line2,
-    //       userAd.city
-    //     );
-
-    //     const googleMapsClient = require("@google/maps").createClient({
-    //       key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
-    //       Promise: Promise
-    //     });
-
-    //     googleMapsClient
-    //       .geocode({
-    //         address: `${(json.users[0].address.address_line1,
-    //         userAd.address_line2,
-    //         userAd.city)}`
-    //       })
-    //       .asPromise()
-    //       .then(response => {
-    //         console.log(response.json.results);
-    //         this.setState(
-    //           {
-    //             lat: response.json.results[0].geometry.location.lat,
-    //             lng: response.json.results[0].geometry.location.lng
-    //           },
-    //           () => {
-    //             console.log("State::::", this.state.lat);
-    //           }
-    //         );
-    //       })
-    //       .catch(err => {
-    //         console.log(err);
-    //       });
-    //   });
+        if (
+          loginAddress.address_line1 &&
+          loginAddress.city &&
+          loginAddress.province &&
+          loginAddress.postal_code &&
+          loginAddress.country
+        ) {
+          const googleMapsClient = require("@google/maps").createClient({
+            key: "",
+            Promise: Promise
+          });
+          googleMapsClient
+            .geocode({
+              address: `${(loginAddress.address_line1,
+              loginAddress.address_line2,
+              loginAddress.city,
+              loginAddress.province,
+              loginAddress.postal_code,
+              loginAddress.country)}`
+            })
+            .asPromise()
+            .then(response => {
+              console.log(response.json.results);
+              this.setState(
+                {
+                  lat: response.json.results[0].geometry.location.lat,
+                  lng: response.json.results[0].geometry.location.lng
+                },
+                () => {
+                  console.log("State::::", this.state.lat);
+                }
+              );
+            });
+        }
+      })
+      .catch(error => console.error("Error:", error));
   }
 
   onMarkerClick = (props, marker, e) =>
@@ -101,19 +110,65 @@ class GoogleMaps extends Component {
     }
   };
 
+  submit = () => {
+    console.log();
+    
+
+    const googleMapsClient = require("@google/maps").createClient({
+      key: "",
+      Promise: Promise
+    });
+    googleMapsClient
+      .geocode({
+        address: `${(this.state.streetAddress,
+          this.state.city,
+        this.state.postalCode)}`
+      })
+      .asPromise()
+      .then(response => {
+        console.log("response!!!!!!!!!!!!!",response.json.results);
+        this.setState(
+          {
+            lat: response.json.results[0].geometry.location.lat,
+            lng: response.json.results[0].geometry.location.lng
+          },
+          () => {
+            console.log("State::::", this.state.lat);
+          }
+        );
+      });
+      
+  };
+  
+
   render() {
     return (
       <div>
+        {/* {sessionStorage.length === 0 && <Form submit={this.submit} />}
+        {this.state.currentUserLocation && <Form submit={this.submit} />} */}
+        <Form submit={this.submit} 
+        streetAddress = {this.state.streetAddress}
+        city={this.state.city}
+        postalCode={this.state.postalCode}
+        dataChange={this.onInputChanges} />
         {this.state.lat != null && (
+          
           <Map
+          
+          
             onClick={this.onMapClick}
             google={this.props.google}
             initialCenter={{
               lng: this.state.lng,
               lat: this.state.lat
             }}
-            style={{ height: "35vh", width: "35vh", marginLeft: 'auto',
-            marginRight: '100px' }}
+            
+            style={{
+              height: "35vh",
+              width: "35vh",
+              marginLeft: "auto",
+              marginRight: "100px"
+            }}
             zoom={14}
           >
             {console.log(this.props.google)}
@@ -134,6 +189,7 @@ class GoogleMaps extends Component {
               </div>
             </InfoWindow>
           </Map>
+          
         )
         // </div>
         }
@@ -142,5 +198,5 @@ class GoogleMaps extends Component {
   }
 }
 export default GoogleApiWrapper({
-  apiKey: ("AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU")
+  apiKey: ""
 })(GoogleMaps);
