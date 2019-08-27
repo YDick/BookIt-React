@@ -110,7 +110,7 @@ export default class Signup extends Component {
             <FormControl
               autoFocus
               type="text"
-              placeholder="Name"
+              placeholder="Katniss Everdeen"
               value={this.state.name}
               onChange={this.handleChange}
             />
@@ -121,7 +121,7 @@ export default class Signup extends Component {
             <FormControl
               autoFocus
               type="email"
-              placeholder="Email"
+              placeholder="BookLover123@gmail.com"
            value={this.state.email}
             onChange={this.handleChange}
             />
@@ -199,7 +199,7 @@ export default class Signup extends Component {
           <FormGroup controlId="confirmPassword">
             <FormLabel>Confirm Password</FormLabel>
             <FormControl
-              placeholder="Password"
+              placeholder="Confirm Password"
               value={this.state.confirmPassword}
               onChange={this.handleChange}
               type="password"
