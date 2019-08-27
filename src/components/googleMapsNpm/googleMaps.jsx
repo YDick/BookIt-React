@@ -64,7 +64,7 @@ class GoogleMaps extends Component {
           loginAddress.country
         ) {
           const googleMapsClient = require("@google/maps").createClient({
-            key: "",
+            key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
             Promise: Promise
           });
           googleMapsClient
@@ -92,6 +92,9 @@ class GoogleMaps extends Component {
         }
       })
       .catch(error => console.error("Error:", error));
+
+
+     
   }
 
   onMarkerClick = (props, marker, e) =>
@@ -115,7 +118,7 @@ class GoogleMaps extends Component {
     
 
     const googleMapsClient = require("@google/maps").createClient({
-      key: "",
+      key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
       Promise: Promise
     });
     googleMapsClient
@@ -151,6 +154,10 @@ class GoogleMaps extends Component {
         city={this.state.city}
         postalCode={this.state.postalCode}
         dataChange={this.onInputChanges} />
+
+{ this.state.lat && this.state.map}
+    
+
         {this.state.lat != null && (
           
           <Map
@@ -159,6 +166,10 @@ class GoogleMaps extends Component {
             onClick={this.onMapClick}
             google={this.props.google}
             initialCenter={{
+              lng: this.state.lng,
+              lat: this.state.lat
+            }}
+            center={{
               lng: this.state.lng,
               lat: this.state.lat
             }}
@@ -190,7 +201,7 @@ class GoogleMaps extends Component {
             </InfoWindow>
           </Map>
           
-        )
+      )
         // </div>
         }
       </div>
