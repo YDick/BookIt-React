@@ -50,27 +50,13 @@ export default class Login extends Component {
     .catch(error=>console.error('Error:', error));
   }
 
-
-  deleteUser = e => {
-    fetch("http://book-it.herokuapp.com/api/v1/users/13",{
-      method: 'DELETE',
-      headers:{
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer'+ sessionStorage.getItem("JWT")
-      }
-    }).then(e=>e.json())
-    .then(data=> {
-        console.log('Success:', data);
-      })
-    .catch(error=>console.error('Error:', error));
-  }
-  
+ 
 
   render() {
     return (
       <div className="Login">
         <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="email" bssize="large">
+          <FormGroup controlId="email">
             <FormLabel>Email</FormLabel>
             <FormControl
               autoFocus
@@ -80,7 +66,7 @@ export default class Login extends Component {
               onChange={this.handleChange}
             />
           </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
+          <FormGroup controlId="password">
             <FormLabel>Password</FormLabel>
             <FormControl
               placeholder="Password"
@@ -91,7 +77,6 @@ export default class Login extends Component {
           </FormGroup>
           <Button
             block
-            bsSize="large"
             disabled={!this.validateForm()}
             type="submit"
           >
@@ -100,9 +85,6 @@ export default class Login extends Component {
         </form>
 
         <Link className="link" to="/signup">Don't have an account? <span className="link-signup">Signup</span></Link>
-        <Button
-          onClick={e=>this.deleteUser()}
-        >Delete User</Button>
       </div>
     );
   }
