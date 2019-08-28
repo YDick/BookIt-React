@@ -22,10 +22,9 @@ render() {
       <MainPage/>
       )}/>
 
-<Router>
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
-        </Router>
+   
 
     </Switch>
     </Router>

@@ -94,6 +94,21 @@ class GoogleMaps extends Component {
       .catch(error => console.error("Error:", error));
 
 
+      fetch("https://book-it.herokuapp.com/api/v1/book_clubs", {
+      method: "GET",
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+ sessionStorage.JWT
+      }
+
+    })
+      .then(e => e.json())
+      .then(data => {
+        console.log(data)
+
+      })
+      .catch(error => console.error("Error:", error));
+
      
   }
 
@@ -146,9 +161,7 @@ class GoogleMaps extends Component {
 
   render() {
     return (
-      <div>
-        {/* {sessionStorage.length === 0 && <Form submit={this.submit} />}
-        {this.state.currentUserLocation && <Form submit={this.submit} />} */}
+      <div style={{display: 'flex', flexDirection: 'flexEnd', flexWrap: 'wrap'}}>
         <Form submit={this.submit} 
         streetAddress = {this.state.streetAddress}
         city={this.state.city}
@@ -173,23 +186,27 @@ class GoogleMaps extends Component {
               lng: this.state.lng,
               lat: this.state.lat
             }}
-            
+            containerStyle={{width: '100%', height: '250px', position: 'relative'}}
+
             style={{
               height: "35vh",
               width: "35vh",
-              marginLeft: "auto",
-              marginRight: "100px"
+              // marginLeft: "800px",
+              // marginRight: "auto",
+              display: 'flex',
+              justifyContent: "flexEnd"
+          
             }}
             zoom={14}
           >
             {console.log(this.props.google)}
 
-            {/* 
-      {this.state.markers.map((e,i)=> 
+            
+      {/* {this.state.markers.map((e,i)=> 
  <Marker key={i} onClick={this.onMarkerClick} 
  position={{lat: e.address.geo.lat, lng: e.address.geo.lng}} 
  title={e.address.street}
-         name={e.address.city} />        )} */}
+         name={e.address.city} />        )}
 
             <InfoWindow
               marker={this.state.activeMarker}
@@ -198,7 +215,7 @@ class GoogleMaps extends Component {
               <div>
                 <h1>{this.state.selectedPlace.name}</h1>
               </div>
-            </InfoWindow>
+            </InfoWindow> */}
           </Map>
           
       )
@@ -209,5 +226,5 @@ class GoogleMaps extends Component {
   }
 }
 export default GoogleApiWrapper({
-  apiKey: ""
+  apiKey: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU"
 })(GoogleMaps);

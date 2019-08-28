@@ -41,21 +41,14 @@ function Form(props) {
             }}
           />
         </label>
+        
         <button
           value="Submit"
           onClick={e => {
             e.preventDefault();
-            // console.log("DATA::", {
-            //   streetAddress: streetAddress || "ppp",
-            //   city: city,
-            //   postalCode: postalCode
-            // });
+           
 
-            props.submit({
-            //   streetAddress: props.streetAddress,
-            //   city: props.city,
-            //   postalCode: props.postalCode
-            });
+            props.submit();
           }}
         >
           Submit
