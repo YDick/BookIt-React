@@ -3,7 +3,6 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import Form from "../mapForm/form";
 
 class GoogleMaps extends Component {
-  
   constructor(props) {
     super(props);
     this.state = {
@@ -36,8 +35,8 @@ class GoogleMaps extends Component {
     }
   };
 
-
   componentDidMount() {
+    // current user:
     fetch("https://book-it.herokuapp.com/api/v1/current", {
       method: "GET",
       headers: {
@@ -92,24 +91,53 @@ class GoogleMaps extends Component {
         }
       })
       .catch(error => console.error("Error:", error));
-
-
-      fetch("https://book-it.herokuapp.com/api/v1/book_clubs", {
+    // Book clubs:
+    fetch("https://book-it.herokuapp.com/api/v1/book_clubs", {
       method: "GET",
-      headers:{
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer '+ sessionStorage.JWT
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.JWT
       }
-
     })
       .then(e => e.json())
       .then(data => {
-        console.log(data)
+        let bookClubs = data.book_clubs;
+        console.log("let", bookClubs);
+        bookClubs.forEach(club => {
+          const googleMapsClient = require("@google/maps").createClient({
+            key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
+            Promise: Promise
+          });
+          googleMapsClient
+            .geocode({
+              address: `${(club.address.address_line1,
+              club.address.address_line2,
+              club.address.city)}`
+            })
+            .asPromise()
+            .then(response => {
+              console.log("response!!!!!!!!!!!!!", response.json.results);
+              let info = {
+                lat: response.json.results[0].geometry.location.lat,
+                lng: response.json.results[0].geometry.location.lng,
+                bookClub: club
+              };
+              let dataCopy = this.state.markers
+              dataCopy.push(info);
 
+              this.setState(
+                {
+                  markers: dataCopy
+                },
+                () => {
+                  console.log("State::::", this.state.markers);
+                }
+              );
+            });
+        });
+     
       })
       .catch(error => console.error("Error:", error));
-
-     
   }
 
   onMarkerClick = (props, marker, e) =>
@@ -130,7 +158,6 @@ class GoogleMaps extends Component {
 
   submit = () => {
     console.log();
-    
 
     const googleMapsClient = require("@google/maps").createClient({
       key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
@@ -139,12 +166,12 @@ class GoogleMaps extends Component {
     googleMapsClient
       .geocode({
         address: `${(this.state.streetAddress,
-          this.state.city,
+        this.state.city,
         this.state.postalCode)}`
       })
       .asPromise()
       .then(response => {
-        console.log("response!!!!!!!!!!!!!",response.json.results);
+        console.log("response!!!!!!!!!!!!!", response.json.results);
         this.setState(
           {
             lat: response.json.results[0].geometry.location.lat,
@@ -155,27 +182,26 @@ class GoogleMaps extends Component {
           }
         );
       });
-      
   };
-  
 
   render() {
     return (
-      <div style={{display: 'flex', flexDirection: 'flexEnd', flexWrap: 'wrap'}}>
-        <Form submit={this.submit} 
-        streetAddress = {this.state.streetAddress}
-        city={this.state.city}
-        postalCode={this.state.postalCode}
-        dataChange={this.onInputChanges} />
+      <div
+        style={{ display: "flex", flexDirection: "flexEnd", flexWrap: "wrap" }}
+      >
 
-{ this.state.lat && this.state.map}
-    
+        <Form
+          submit={this.submit}
+          streetAddress={this.state.streetAddress}
+          city={this.state.city}
+          postalCode={this.state.postalCode}
+          dataChange={this.onInputChanges}
+        />
+
+        {this.state.lat && this.state.map}
 
         {this.state.lat != null && (
-          
           <Map
-          
-          
             onClick={this.onMapClick}
             google={this.props.google}
             initialCenter={{
@@ -186,27 +212,59 @@ class GoogleMaps extends Component {
               lng: this.state.lng,
               lat: this.state.lat
             }}
-            containerStyle={{width: '100%', height: '250px', position: 'relative'}}
-
+            containerStyle={{
+              width: "100%",
+              height: "250px",
+              position: "relative"
+            }}
             style={{
               height: "35vh",
               width: "35vh",
               // marginLeft: "800px",
               // marginRight: "auto",
-              display: 'flex',
+              display: "flex",
               justifyContent: "flexEnd"
-          
             }}
             zoom={14}
           >
-            {console.log(this.props.google)}
-
+            {console.log("markers in rendeer!", this.state.markers,this.state.markers[0])}
             
-      {/* {this.state.markers.map((e,i)=> 
- <Marker key={i} onClick={this.onMarkerClick} 
- position={{lat: e.address.geo.lat, lng: e.address.geo.lng}} 
- title={e.address.street}
-         name={e.address.city} />        )}
+            <Marker
+              onClick={this.onMarkerClick}
+              position={{ lat: 37.778519, lng: -122.40564 }}
+              title={"The marker`s title will appear as a tooltip."}
+              name={"Current location"}
+            />
+
+            {this.state.markers.map((e, i) => (
+              <Marker
+                key={i}
+                onClick={this.onMarkerClick}
+                position={{ lat: e.lat, lng: e.lng }}
+                title={`${e.bookClub.address.address_line1}  ${e.bookClub.address.address_line2}`}
+                name={e.bookClub.address.city}
+              />
+            ))}
+
+<Marker
+              onClick={this.onMarkerClick}
+              position={{
+                lat: this.state.markers[0].lat,
+                lng: this.state.markers[0].lng
+              }}
+              title={`working`}
+              name={this.state.markers[0].bookClub.address.address_line2}
+            />
+<Marker
+              onClick={this.onMarkerClick}
+              position={{
+                lat: this.state.markers[0].lat,
+                lng: this.state.markers[0].lng
+              }}
+              title={` working`}
+              name={this.state.markers[0].bookClub.address.address_line2}
+            />
+            
 
             <InfoWindow
               marker={this.state.activeMarker}
@@ -215,10 +273,9 @@ class GoogleMaps extends Component {
               <div>
                 <h1>{this.state.selectedPlace.name}</h1>
               </div>
-            </InfoWindow> */}
+            </InfoWindow>
           </Map>
-          
-      )
+        )
         // </div>
         }
       </div>
