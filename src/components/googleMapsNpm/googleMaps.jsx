@@ -229,12 +229,12 @@ class GoogleMaps extends Component {
           >
             {console.log("markers in rendeer!", this.state.markers,this.state.markers[0])}
             
-            <Marker
+            {/* <Marker
               onClick={this.onMarkerClick}
               position={{ lat: 37.778519, lng: -122.40564 }}
               title={"The marker`s title will appear as a tooltip."}
               name={"Current location"}
-            />
+            /> */}
 
             {this.state.markers.map((e, i) => (
               <Marker
@@ -245,7 +245,7 @@ class GoogleMaps extends Component {
                 name={e.bookClub.address.city}
               />
             ))}
-
+{/* 
 <Marker
               onClick={this.onMarkerClick}
               position={{
@@ -263,7 +263,7 @@ class GoogleMaps extends Component {
               }}
               title={` working`}
               name={this.state.markers[0].bookClub.address.address_line2}
-            />
+            /> */}
             
 
             <InfoWindow
