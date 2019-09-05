@@ -50,7 +50,9 @@ export default class Login extends Component {
         this.props.history.push(`/`);
 
       })
-    .catch(error=>console.error('Error:', error));
+    .catch(error=>{
+      console.error('Error:', error);
+    });
   }
 
  
