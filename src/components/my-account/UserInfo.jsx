@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, FormLabel, Col, Row, Form, Image } from "react-bootstrap";
 import "./UserInfo.css"
 
+import EditButton from './EditButton'
+
 export default class UserInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
+          id: null, 
           name: '',
           email: "",
           password: "",
+          confirmPassword: "",
             address_line1: '',
             city: '',
             province: '',
@@ -22,7 +26,8 @@ export default class UserInfo extends Component {
 
       componentDidMount() {
         console.log('componectDidMount')
-        // fetch the current user for My Account
+
+        // fetch the *current user* for My Account
         fetch('http://book-it.herokuapp.com/api/v1/current', {
             headers:{
                 'Content-Type': 'application/json',
@@ -33,6 +38,7 @@ export default class UserInfo extends Component {
             .then(json => {
                 let user = json.current_user;
                 this.setState({
+                    id: user.id,
                     name: user.name,
                     email: user.email,
                       address_line1: user.address.address_line1,
@@ -42,22 +48,75 @@ export default class UserInfo extends Component {
                       country: user.address.country,
                       gravatar: json.gravatar
                 })
-                console.log(this.state)
+                console.log("state from mount: " + this.state)
             })
             .catch(error=>console.error('Error:', error));
+
     }
 
     edit() {
-        console.log('hi');
+        console.log('you may edit');
         this.setState({
             edit: true
         });
-        this.props.history.push(`/MyAccount`);
-
     }
+
+    handleChange = event => {
+        this.setState({
+          [event.target.id]: event.target.value
+        });
+      }
+
+    // update user
+    handleSubmit = event => {
+        event.preventDefault();
+
+        var address_line1 = this.state.address_line1;
+        var city = this.state.city;
+        var province = this.state.province;
+        var postal_code = this.state.postal_code;
+        var country = this.state.country;
+
+
+        fetch(`http://book-it.herokuapp.com/api/v1/users/${this.state.id}`,{
+            method: 'PATCH',
+            body:
+            JSON.stringify(
+              {"user":  {               
+                "name": this.state.name,
+                "email": this.state.email,
+                // "password": this.state.password,
+                "address": {
+                  address_line1: address_line1,
+                  city: city,
+                  province: province,
+                  postal_code: postal_code,
+                  country: country
+                }
+                  }
+                }
+            ),
+            headers:{
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer '+ sessionStorage.JWT
+            }
+          }).then(e=>e.json())
+          .then(data=> {
+              console.log('Success:', data);
+              }
+            )
+          .catch(error=>console.error('Error:', error));
+        }
+
+    validateForm() {
+        return (
+          this.state.name.length > 0
+        );
+      }
      
 
-    render()  {return (
+    render()  {
+        return (
       <div className="Signup">
           <h1>My Account</h1>
 
@@ -89,22 +148,13 @@ export default class UserInfo extends Component {
           <FormGroup as={Row} controlId="email" >
             <FormLabel column sm="4">Email</FormLabel>
             <Col sm="8">
-            {this.state.edit ? 
-                (<Form.Control
-                    autoFocus
-                    type="text"
-                    value={this.state.email}
-                    onChange={this.handleChange}
-                    />)
-                :
-                    (<Form.Control
+            <Form.Control
                     readOnly
                     autoFocus
                     plaintext
                     type="text"
                     value={this.state.email}
-                />)
-            }
+                />
             </Col>
           </FormGroup>
 
@@ -222,27 +272,8 @@ export default class UserInfo extends Component {
               type="password"
             />
           </FormGroup>
-
-        {
-            this.state.edit ?
-            <Button
-                block
-                className = "button is-link"
-                disabled={!this.validateForm()}
-                type="submit"
-                onClick={e=>this.edit()}
-            >
-                Save Changes
-          </Button> 
-            :
-            <Button
-            block
-            className = "button is-link"
-            onClick={e=>this.edit()}
-          >
-            Edit
-          </Button> 
-        }
+            
+            <EditButton edit={this.edit} handleChange={this.handleSubmit} />
 
         </Form>
 

@@ -10,7 +10,7 @@ function Logout(props){
     }
     
     return(
-        <Link onClick={e=>logout()}>
+        <Link onClick={e=>logout()} to="/">
             Logout
         </Link>
     )
