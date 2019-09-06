@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Button, FormGroup, FormControl, FormLabel, Col, Row, Form, Image } from "react-bootstrap";
+import "./UserInfo.css"
 
 export default class UserInfo extends Component {
     constructor(props) {
@@ -12,6 +14,8 @@ export default class UserInfo extends Component {
             province: '',
             postal_code: '',
             country: '',
+            gravatar: '',
+            edit: false
         };
       }
 
@@ -27,127 +31,219 @@ export default class UserInfo extends Component {
         })
             .then(e => e.json())
             .then(json => {
-                this.setState()
+                let user = json.current_user;
+                this.setState({
+                    name: user.name,
+                    email: user.email,
+                      address_line1: user.address.address_line1,
+                      city: user.address.city,
+                      province: user.address.province,
+                      postal_code: user.address.postal_code,
+                      country: user.address.country,
+                      gravatar: json.gravatar
+                })
+                console.log(this.state)
             })
             .catch(error=>console.error('Error:', error));
     }
+
+    edit() {
+        console.log('hi');
+        this.setState({
+            edit: true
+        });
+        this.props.history.push(`/MyAccount`);
+
+    }
      
 
-    render(){return (
+    render()  {return (
       <div className="Signup">
-          <h1>Sign Up Here!</h1>
+          <h1>My Account</h1>
 
-        <Form onSubmit={this.handleSubmit}>
+        <Image src={this.state.gravatar} alt="" rounded />
 
-        <FormGroup controlId="name">
-            <FormLabel>Name</FormLabel>
-            <FormControl
-              autoFocus
-              type="text"
-              placeholder="Katniss Everdeen"
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
+        <Form>
+        <FormGroup as={Row} controlId="name">
+            <FormLabel column sm="4">Name</FormLabel>
+            <Col sm="8">
+            {this.state.edit ? 
+                (<Form.Control
+                    autoFocus
+                    type="text"
+                    value={this.state.name}
+                    onChange={this.handleChange}
+                    />)
+                :
+                    (<Form.Control
+                    readOnly
+                    autoFocus
+                    plaintext
+                    type="text"
+                    value={this.state.name}
+                />)
+            }
+            </Col>
           </FormGroup>
 
-          <FormGroup controlId="email" >
-            <FormLabel>Email</FormLabel>
-            <FormControl
-              autoFocus
-              type="email"
-              placeholder="BookLover123@gmail.com"
-           value={this.state.email}
-            onChange={this.handleChange}
-            />
+          <FormGroup as={Row} controlId="email" >
+            <FormLabel column sm="4">Email</FormLabel>
+            <Col sm="8">
+            {this.state.edit ? 
+                (<Form.Control
+                    autoFocus
+                    type="text"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                    />)
+                :
+                    (<Form.Control
+                    readOnly
+                    autoFocus
+                    plaintext
+                    type="text"
+                    value={this.state.email}
+                />)
+            }
+            </Col>
           </FormGroup>
 
-          <FormGroup controlId="address_line1" >
-            <FormLabel>Address</FormLabel>
-            <FormControl
-              autoFocus
-              type="text"
-              placeholder="123 Something Rd."
-           value={this.state.address_line1}
-            onChange={this.handleChange}
-            />
+          <FormGroup as={Row} controlId="address_line1" >
+            <FormLabel column sm="4">Address</FormLabel>
+            <Col sm="8">
+            {this.state.edit ? 
+                (<Form.Control
+                    autoFocus
+                    type="text"
+                    value={this.state.address_line1}
+                    onChange={this.handleChange}
+                    />)
+                :
+                    (<Form.Control
+                    readOnly
+                    autoFocus
+                    plaintext
+                    type="text"
+                    value={this.state.address_line1}
+                />)
+            }
+            </Col>
           </FormGroup>
 
       <Form.Row>
           <Form.Group controlId="city" as={Col}>
             <Form.Label>City</Form.Label>
-            <Form.Control
-              autoFocus
-              type="text"
-              placeholder="Toronto"
-           value={this.state.city}
-            onChange={this.handleChange}
-            />
+            {this.state.edit ? 
+                (<Form.Control
+                    autoFocus
+                    type="text"
+                    value={this.state.city}
+                    onChange={this.handleChange}
+                    />)
+                :
+                    (<Form.Control
+                    readOnly
+                    autoFocus
+                    plaintext
+                    type="text"
+                    value={this.state.city}
+                />)
+            }
           </Form.Group>
 
           <Form.Group controlId="province" as={Col}>
             <Form.Label>Province</Form.Label>
-            <Form.Control
-              autoFocus
-              type="text"
-              placeholder="ON"
-           value={this.state.province}
-            onChange={this.handleChange}
-            />
+            {this.state.edit ? 
+                (<Form.Control
+                    autoFocus
+                    type="text"
+                    value={this.state.province}
+                    onChange={this.handleChange}
+                    />)
+                :
+                    (<Form.Control
+                    readOnly
+                    autoFocus
+                    plaintext
+                    type="text"
+                    value={this.state.province}
+                />)
+            }
           </Form.Group>
 
 
           <Form.Group controlId="country" as={Col}>
             <Form.Label>Country</Form.Label>
-            <Form.Control
-              autoFocus
-              type="text"
-              placeholder="Canada"
-           value={this.state.country}
-            onChange={this.handleChange}
-            />
+            {this.state.edit ? 
+                (<Form.Control
+                    autoFocus
+                    type="text"
+                    value={this.state.country}
+                    onChange={this.handleChange}
+                    />)
+                :
+                    (<Form.Control
+                    readOnly
+                    autoFocus
+                    plaintext
+                    type="text"
+                    value={this.state.country}
+                />)
+            }
           </Form.Group>
       </Form.Row>
 
           <FormGroup controlId="postal_code" >
             <FormLabel>Postal Code</FormLabel>
-            <FormControl
-              autoFocus
-              type="text"
-              placeholder="M5N2S5"
-           value={this.state.postal_code}
-            onChange={this.handleChange}
-            />
+            {this.state.edit ? 
+                (<Form.Control
+                    autoFocus
+                    type="text"
+                    value={this.state.postal_code}
+                    onChange={this.handleChange}
+                    />)
+                :
+                    (<Form.Control
+                    readOnly
+                    autoFocus
+                    plaintext
+                    type="text"
+                    value={this.state.postal_code}
+                />)
+            }
           </FormGroup>
 
 
           <FormGroup controlId="password">
             <FormLabel>Password</FormLabel>
             <FormControl
-              placeholder="Password"
               value={this.state.password}
               onChange={this.handleChange}
               type="password"
             />
           </FormGroup>
 
-          <FormGroup controlId="confirmPassword">
-            <FormLabel>Confirm Password</FormLabel>
-            <FormControl
-              placeholder="Confirm Password"
-              value={this.state.confirmPassword}
-              onChange={this.handleChange}
-              type="password"
-            />
-          </FormGroup>
-
-          <Button
-            block
-            disabled={!this.validateForm()}
-            type="submit"
-            className = "button is-link"
-          >
-            Sign Up!
+        {
+            this.state.edit ?
+            <Button
+                block
+                className = "button is-link"
+                disabled={!this.validateForm()}
+                type="submit"
+                onClick={e=>this.edit()}
+            >
+                Save Changes
           </Button> 
+            :
+            <Button
+            block
+            className = "button is-link"
+            onClick={e=>this.edit()}
+          >
+            Edit
+          </Button> 
+        }
+
         </Form>
 
       </div>

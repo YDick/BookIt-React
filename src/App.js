@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
+import UserInfo from "./components/my-account/UserInfo"
 
 
 
@@ -35,9 +36,11 @@ class App extends React.Component {
    
         <Router>
           <AccountStuff logOut={this.logOut}/>
+
           <Route path="/login" exact 
                  render={props => <Login {...props} logIn={this.logIn} />} />
           <Route path="/signup" exact component={Signup} />
+          <Route path="/MyAccount" exact component={UserInfo} />
         </Router>
       </div>
     );
