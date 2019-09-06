@@ -1,5 +1,6 @@
 import React, { Component }  from 'react'
 import {Carousel,} from "react-bootstrap";
+import { Link } from 'react-router-dom'
 class clubCarousel extends Component {
   constructor(props) {
     super(props);
@@ -48,7 +49,7 @@ class clubCarousel extends Component {
       alt="First club"
     />
     <Carousel.Caption>
-      <a href="login"><h3>{this.state.clubs[this.state.clubs.length -1].name}</h3></a>
+      <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -1].name}</h3></Link>
       <p>{this.state.clubs[this.state.clubs.length -1].address.city}</p>
     </Carousel.Caption>
   </Carousel.Item>
@@ -62,7 +63,7 @@ class clubCarousel extends Component {
       alt="second club"
     />
     <Carousel.Caption>
-      <a href="login"><h3>{this.state.clubs[this.state.clubs.length -2].name}</h3></a>
+      <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -2].name}</h3></Link>
       <p>{this.state.clubs[this.state.clubs.length -2].address.city}</p>
     </Carousel.Caption>
   </Carousel.Item>
@@ -77,7 +78,7 @@ class clubCarousel extends Component {
     />
 
     <Carousel.Caption>
-    <a href="login"><h3>{this.state.clubs[this.state.clubs.length -3].name}</h3></a>
+    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -3].name}</h3></Link>
       <p>{this.state.clubs[this.state.clubs.length -3].address.city}</p>
     </Carousel.Caption>
   </Carousel.Item>}
@@ -92,7 +93,7 @@ class clubCarousel extends Component {
     />
 
     <Carousel.Caption>
-    <a href="login"><h3>{this.state.clubs[this.state.clubs.length -4].name}</h3></a>
+    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -4].name}</h3></Link>
       <p>{this.state.clubs[this.state.clubs.length -4].address.city}</p>
     </Carousel.Caption>
   </Carousel.Item>}
@@ -107,7 +108,7 @@ class clubCarousel extends Component {
     />
 
     <Carousel.Caption>
-    <a href="login"><h3>{this.state.clubs[this.state.clubs.length -5].name}</h3></a>
+    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -5].name}</h3></Link>
       <p>{this.state.clubs[this.state.clubs.length -5].address.city}</p>
     </Carousel.Caption>
   </Carousel.Item>}
@@ -122,7 +123,7 @@ class clubCarousel extends Component {
     />
 
     <Carousel.Caption>
-    <a href="login"><h3>{this.state.clubs[this.state.clubs.length -6].name}</h3></a>
+    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -6].name}</h3></Link>
       <p>{this.state.clubs[this.state.clubs.length -6].address.city}</p>
     </Carousel.Caption>
   </Carousel.Item>}
@@ -137,7 +138,7 @@ class clubCarousel extends Component {
     />
 
     <Carousel.Caption>
-    <a href="login"><h3>{this.state.clubs[this.state.clubs.length -7].name}</h3></a>
+    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -7].name}</h3></Link>
       <p>{this.state.clubs[this.state.clubs.length -7].address.city}</p>
     </Carousel.Caption>
   </Carousel.Item>}
@@ -152,7 +153,7 @@ class clubCarousel extends Component {
     />
 
     <Carousel.Caption>
-    <a href="login"><h3>{this.state.clubs[this.state.clubs.length -8].name}</h3></a>
+    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -8].name}</h3></Link>
       <p>{this.state.clubs[this.state.clubs.length -8].address.city}</p>
     </Carousel.Caption>
   </Carousel.Item>}
@@ -167,7 +168,7 @@ class clubCarousel extends Component {
     />
 
     <Carousel.Caption>
-    <a href="login"><h3>{this.state.clubs[this.state.clubs.length -8].name}</h3></a>
+    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -8].name}</h3></Link>
       <p>{this.state.clubs[this.state.clubs.length -8].address.city}</p>
     </Carousel.Caption>
   </Carousel.Item>}
@@ -182,7 +183,7 @@ class clubCarousel extends Component {
     />
 
     <Carousel.Caption>
-    <a href="login"><h3>{this.state.clubs[this.state.clubs.length -9].name}</h3></a>
+    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -9].name}</h3></Link>
       <p>{this.state.clubs[this.state.clubs.length -9].address.city}</p>
     </Carousel.Caption>
   </Carousel.Item>}
@@ -197,7 +198,7 @@ class clubCarousel extends Component {
     />
 
     <Carousel.Caption>
-    <a href="login"><h3>{this.state.clubs[this.state.clubs.length -10].name}</h3></a>
+    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -10].name}</h3></Link>
       <p>{this.state.clubs[this.state.clubs.length -10].address.city}</p>
     </Carousel.Caption>
   </Carousel.Item>}
@@ -209,52 +210,6 @@ class clubCarousel extends Component {
 
 
 }
-// function clubCarousel (props) {
- 
-// return (
-
-// <Carousel>
-//   <Carousel.Item>
-//     <img
-//      style={{width: '800px', height: '300px', margin: 'auto'}}
-//      className="d-block w-100"
-//       src="https://www.chrislatta.org/images/graphics/backgrounds/solid-backgrounds-gray-808080-4096x2160-TV4K.png?v=20171211195613"
-//       alt="First slide"
-//     />
-//     <Carousel.Caption>
-//       <h3>First slide label</h3>
-//       <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-//     </Carousel.Caption>
-//   </Carousel.Item>
-//   <Carousel.Item>
-//     <img
-//      style={{width: '800px', height: '300px', margin: 'auto'}}
-//       className="d-block w-100"
-//       src="https://www.chrislatta.org/images/graphics/backgrounds/solid-backgrounds-gray-808080-4096x2160-TV4K.png?v=20171211195613"
-//       alt="Third slide"
-//     />
-
-//     <Carousel.Caption>
-//       <h3>Second slide label</h3>
-//       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-//     </Carousel.Caption>
-//   </Carousel.Item>
-//   <Carousel.Item>
-//     <img
-//          style={{width: '800px', height: '300px', margin: 'auto'}}
-//       className="d-block w-100"
-//       src="https://www.chrislatta.org/images/graphics/backgrounds/solid-backgrounds-gray-808080-4096x2160-TV4K.png?v=20171211195613"
-//       alt="Third slide"
-//     />
-
-//     <Carousel.Caption>
-//       <h3>Third slide label</h3>
-//       <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-//     </Carousel.Caption>
-//   </Carousel.Item>
-// </Carousel>
-//   )
-// }
 
 
 export default clubCarousel

@@ -69,7 +69,6 @@ class GoogleMaps extends Component {
           googleMapsClient
             .geocode({
               address: `${(loginAddress.address_line1,
-              loginAddress.address_line2,
               loginAddress.city,
               loginAddress.province,
               loginAddress.postal_code,
@@ -108,11 +107,15 @@ class GoogleMaps extends Component {
             key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
             Promise: Promise
           });
+          console.log(
+            "Address::::",
+            `${club.address.address_line1}  ${club.address.city}`, club
+          );
+
           googleMapsClient
             .geocode({
-              address: `${(club.address.address_line1,
-              club.address.address_line2,
-              club.address.city)}`
+              address: `${club.address.address_line1} ${club.address.city} ${club.address.postal_code} ${club.address.province}
+                ${club.address.country}`
             })
             .asPromise()
             .then(response => {
@@ -122,7 +125,7 @@ class GoogleMaps extends Component {
                 lng: response.json.results[0].geometry.location.lng,
                 bookClub: club
               };
-              let dataCopy = this.state.markers
+              let dataCopy = this.state.markers;
               dataCopy.push(info);
 
               this.setState(
@@ -135,7 +138,6 @@ class GoogleMaps extends Component {
               );
             });
         });
-     
       })
       .catch(error => console.error("Error:", error));
   }
@@ -189,7 +191,6 @@ class GoogleMaps extends Component {
       <div
         style={{ display: "flex", flexDirection: "flexEnd", flexWrap: "wrap" }}
       >
-
         <Form
           submit={this.submit}
           streetAddress={this.state.streetAddress}
@@ -218,24 +219,15 @@ class GoogleMaps extends Component {
               position: "relative"
             }}
             style={{
-              height: "35vh",
-              width: "35vh",
+              height: "50vh",
+              width: "50vh",
               // marginLeft: "800px",
               // marginRight: "auto",
               display: "flex",
               justifyContent: "flexEnd"
             }}
-            zoom={14}
+            zoom={15}
           >
-            {console.log("markers in rendeer!", this.state.markers,this.state.markers[0])}
-            
-            {/* <Marker
-              onClick={this.onMarkerClick}
-              position={{ lat: 37.778519, lng: -122.40564 }}
-              title={"The marker`s title will appear as a tooltip."}
-              name={"Current location"}
-            /> */}
-
             {this.state.markers.map((e, i) => (
               <Marker
                 key={i}
@@ -245,26 +237,6 @@ class GoogleMaps extends Component {
                 name={e.bookClub.address.city}
               />
             ))}
-{/* 
-<Marker
-              onClick={this.onMarkerClick}
-              position={{
-                lat: this.state.markers[0].lat,
-                lng: this.state.markers[0].lng
-              }}
-              title={`working`}
-              name={this.state.markers[0].bookClub.address.address_line2}
-            />
-<Marker
-              onClick={this.onMarkerClick}
-              position={{
-                lat: this.state.markers[0].lat,
-                lng: this.state.markers[0].lng
-              }}
-              title={` working`}
-              name={this.state.markers[0].bookClub.address.address_line2}
-            /> */}
-            
 
             <InfoWindow
               marker={this.state.activeMarker}
