@@ -1,34 +1,30 @@
-import React from "react";
-import Bookclub from "./components/BookClub/BookClub";
-import { getBookClub } from "./services/webService";
-import "./App.css";
+import React from 'react';
+import './App.css';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+
+import Login from "./components/login/Login";
+import Signup from "./components/signup/Signup";
+
+
 
 class App extends React.Component {
-  constructor(props) {
+
+  constructor(props){
     super(props);
     this.state = {
-      clubData: null
-    };
-  }
 
-  componentDidMount() {
-    getBookClub(11)
-      .then(e => e.json())
-      .then(e => {
-        console.log(e);
-        
-        this.setState({ clubData: e })});
-  }
-
-  render() {
-    let bookClub = null;
-    if (this.state.clubData != null) {
-      bookClub = <Bookclub  {...this.state.clubData} />
     }
+  }
+
+  render(){
     return (
-    <div className="App">
-    {bookClub}
-    </div>);
+      <div className="App">
+        <Router>
+          <Route path="/login" exact component={Login} />
+          <Route path="/signup" exact component={Signup} />
+        </Router>
+      </div>
+    );
   }
 }
 
