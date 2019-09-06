@@ -7,6 +7,7 @@ const Bookclubs = props => {
   if (props.users.length > 0) {
     users = props.users.map((e, i) => <li key={i}>{e.name}</li>);
   }
+  
 
   return (
     // <div className="item">
@@ -41,21 +42,21 @@ const Bookclubs = props => {
         <div>
           <div style={{ float: "left" }}>
             <ListGroup variant="flush">
-              <ListGroup.Item>Cras justo odio</ListGroup.Item>
-              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+              <ListGroup.Item>{props.userlist}</ListGroup.Item>
+            
             </ListGroup>
           </div>
           <div style={{ float: "right" }}>
             <ListGroup variant="flush">
-              <ListGroup.Item>Cras justo odio</ListGroup.Item>
-              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+              <ListGroup.Item>{props.adminlist}</ListGroup.Item>
+              
             </ListGroup>
           </div>
         </div>
       </Card.Body>
+
       <Button variant="primary">Go somewhere</Button>
+
       <Card.Footer className="text-muted">
         {`${props.club_info.address.address_line1} ${props.club_info.address.address_line2} ${props.club_info.address.city} `}
       </Card.Footer>
@@ -63,4 +64,4 @@ const Bookclubs = props => {
   );
 };
 
-export default Bookclubs;
+export default BookClub;
