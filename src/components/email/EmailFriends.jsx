@@ -68,10 +68,9 @@ export default class Email extends React.Component {
                 <FormGroup controlId="recipientName" as={Col}>
                     <FormLabel>Friend's Name</FormLabel>
                     <Form.Control
-                            readOnly
                             autoFocus
-                            plaintext
                             type="text"
+                            placeholder="Name"
                             value={this.state.recipientName}
                             onChange={this.handleChange}
                         />
@@ -80,10 +79,9 @@ export default class Email extends React.Component {
                 <FormGroup controlId="recipientEmail" as={Col}>
                     <FormLabel>Friend's Email</FormLabel>
                     <Form.Control
-                            readOnly
                             autoFocus
-                            plaintext
-                            type="text"
+                            type="email"
+                            placeholder="Email"
                             value={this.state.recipientEmail}
                             onChange={this.handleChange}
                         />
@@ -92,9 +90,7 @@ export default class Email extends React.Component {
                 <FormGroup controlId="message" as={Col}>
                     <FormLabel>Message</FormLabel>
                     <Form.Control
-                            readOnly
                             autoFocus
-                            plaintext
                             type="text"
                             placeholder="Add a personal note! (optional)"
                             value={this.state.message}
