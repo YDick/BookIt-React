@@ -19,7 +19,7 @@ export default class UserInfo extends Component {
             postal_code: '',
             country: '',
             gravatar: '',
-            edit: false
+            edit: true
         };
       }
 
@@ -103,6 +103,7 @@ export default class UserInfo extends Component {
           }).then(e=>e.json())
           .then(data=> {
               console.log('Success:', data);
+              alert('Changes have been saved!')
               }
             )
           .catch(error=>console.error('Error:', error));
@@ -273,7 +274,25 @@ export default class UserInfo extends Component {
             />
           </FormGroup>
             
-            <EditButton edit={this.edit} handleChange={this.handleSubmit} />
+        {this.state.edit ? 
+          (<Button
+            block
+            className = "button is-link"
+            type="submit"
+            disabled= {false}
+            onClick={e=>this.handleSubmit(e)}
+            >
+            Save Changes
+          </Button> )
+          :
+              (<Button
+                block
+                className = "button is-link"
+                onClick={e=>this.edit()}
+              >
+                Edit
+              </Button>)
+}
 
         </Form>
 
