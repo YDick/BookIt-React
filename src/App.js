@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
-import UserInfo from "./components/my-account/UserInfo"
+import MyAccountHOC from './components/my-account/myAccountHOC';
 
 
 
@@ -40,7 +40,7 @@ class App extends React.Component {
           <Route path="/login" exact 
                  render={props => <Login {...props} logIn={this.logIn} />} />
           <Route path="/signup" exact component={Signup} />
-          <Route path="/MyAccount" exact component={UserInfo} />
+          <Route path="/MyAccount" exact component={MyAccountHOC} />
         </Router>
       </div>
     );

@@ -3,7 +3,7 @@ import { Button, FormGroup, FormControl, FormLabel, Col, Row, Form, Image } from
 import "./UserInfo.css"
 
 
-export default class UserInfo extends Component {
+export default class UpdateUser extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -53,12 +53,6 @@ export default class UserInfo extends Component {
 
     }
 
-    edit() {
-        console.log('you may edit');
-        this.setState({
-            edit: true
-        });
-    }
 
     handleChange = event => {
         this.setState({
@@ -102,7 +96,9 @@ export default class UserInfo extends Component {
           }).then(e=>e.json())
           .then(data=> {
               console.log('Success:', data);
-              alert('Changes have been saved!')
+              this.props.edit();
+              alert('Changes have been saved!');
+
               }
             )
           .catch(error=>console.error('Error:', error));
@@ -126,22 +122,12 @@ export default class UserInfo extends Component {
         <FormGroup as={Row} controlId="name">
             <FormLabel column sm="4">Name</FormLabel>
             <Col sm="8">
-            {this.state.edit ? 
-                (<Form.Control
+                <Form.Control
                     autoFocus
                     type="text"
                     value={this.state.name}
                     onChange={this.handleChange}
-                    />)
-                :
-                    (<Form.Control
-                    readOnly
-                    autoFocus
-                    plaintext
-                    type="text"
-                    value={this.state.name}
-                />)
-            }
+                    />
             </Col>
           </FormGroup>
 
@@ -161,106 +147,56 @@ export default class UserInfo extends Component {
           <FormGroup as={Row} controlId="address_line1" >
             <FormLabel column sm="4">Address</FormLabel>
             <Col sm="8">
-            {this.state.edit ? 
-                (<Form.Control
+                <Form.Control
                     autoFocus
                     type="text"
                     value={this.state.address_line1}
                     onChange={this.handleChange}
-                    />)
-                :
-                    (<Form.Control
-                    readOnly
-                    autoFocus
-                    plaintext
-                    type="text"
-                    value={this.state.address_line1}
-                />)
-            }
+                    />
             </Col>
           </FormGroup>
 
       <Form.Row>
           <Form.Group controlId="city" as={Col}>
             <Form.Label>City</Form.Label>
-            {this.state.edit ? 
-                (<Form.Control
+                <Form.Control
                     autoFocus
                     type="text"
                     value={this.state.city}
                     onChange={this.handleChange}
-                    />)
-                :
-                    (<Form.Control
-                    readOnly
-                    autoFocus
-                    plaintext
-                    type="text"
-                    value={this.state.city}
-                />)
-            }
+                    />
           </Form.Group>
 
           <Form.Group controlId="province" as={Col}>
             <Form.Label>Province</Form.Label>
-            {this.state.edit ? 
-                (<Form.Control
+                <Form.Control
                     autoFocus
                     type="text"
                     value={this.state.province}
                     onChange={this.handleChange}
-                    />)
-                :
-                    (<Form.Control
-                    readOnly
-                    autoFocus
-                    plaintext
-                    type="text"
-                    value={this.state.province}
-                />)
-            }
+                    />
           </Form.Group>
 
 
           <Form.Group controlId="country" as={Col}>
             <Form.Label>Country</Form.Label>
-            {this.state.edit ? 
-                (<Form.Control
+                <Form.Control
                     autoFocus
                     type="text"
                     value={this.state.country}
                     onChange={this.handleChange}
-                    />)
-                :
-                    (<Form.Control
-                    readOnly
-                    autoFocus
-                    plaintext
-                    type="text"
-                    value={this.state.country}
-                />)
-            }
+                    />
           </Form.Group>
       </Form.Row>
 
           <FormGroup controlId="postal_code" >
             <FormLabel>Postal Code</FormLabel>
-            {this.state.edit ? 
-                (<Form.Control
+                <Form.Control
                     autoFocus
                     type="text"
                     value={this.state.postal_code}
                     onChange={this.handleChange}
-                    />)
-                :
-                    (<Form.Control
-                    readOnly
-                    autoFocus
-                    plaintext
-                    type="text"
-                    value={this.state.postal_code}
-                />)
-            }
+                    />
           </FormGroup>
 
 
@@ -273,8 +209,8 @@ export default class UserInfo extends Component {
             />
           </FormGroup>
             
-        {this.state.edit ? 
-          (<Button
+
+          <Button
             block
             className = "button is-link"
             type="submit"
@@ -282,16 +218,7 @@ export default class UserInfo extends Component {
             onClick={e=>this.handleSubmit(e)}
             >
             Save Changes
-          </Button> )
-          :
-              (<Button
-                block
-                className = "button is-link"
-                onClick={e=>this.edit()}
-              >
-                Edit
-              </Button>)
-}
+          </Button> 
 
         </Form>
 

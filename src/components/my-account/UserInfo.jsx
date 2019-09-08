@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, FormLabel, Col, Row, Form, Image } from "react-bootstrap";
 import "./UserInfo.css"
 
-import EditButton from './EditButton'
-
 export default class UserInfo extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +17,7 @@ export default class UserInfo extends Component {
             postal_code: '',
             country: '',
             gravatar: '',
-            edit: true
+            edit: false
         };
       }
 
@@ -54,12 +52,6 @@ export default class UserInfo extends Component {
 
     }
 
-    edit() {
-        console.log('you may edit');
-        this.setState({
-            edit: true
-        });
-    }
 
     handleChange = event => {
         this.setState({
@@ -67,54 +59,6 @@ export default class UserInfo extends Component {
         });
       }
 
-    // update user
-    handleSubmit = event => {
-        event.preventDefault();
-
-        var address_line1 = this.state.address_line1;
-        var city = this.state.city;
-        var province = this.state.province;
-        var postal_code = this.state.postal_code;
-        var country = this.state.country;
-
-
-        fetch(`http://book-it.herokuapp.com/api/v1/users/${this.state.id}`,{
-            method: 'PATCH',
-            body:
-            JSON.stringify(
-              {"user":  {               
-                "name": this.state.name,
-                "email": this.state.email,
-                // "password": this.state.password,
-                "address": {
-                  address_line1: address_line1,
-                  city: city,
-                  province: province,
-                  postal_code: postal_code,
-                  country: country
-                }
-                  }
-                }
-            ),
-            headers:{
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer '+ sessionStorage.JWT
-            }
-          }).then(e=>e.json())
-          .then(data=> {
-              console.log('Success:', data);
-              alert('Changes have been saved!')
-              }
-            )
-          .catch(error=>console.error('Error:', error));
-        }
-
-    validateForm() {
-        return (
-          this.state.name.length > 0
-        );
-      }
-     
 
     render()  {
         return (
@@ -263,40 +207,20 @@ export default class UserInfo extends Component {
                 />)
             }
           </FormGroup>
-
-
-          <FormGroup controlId="password">
-            <FormLabel>Password</FormLabel>
-            <FormControl
-              value={this.state.password}
-              onChange={this.handleChange}
-              type="password"
-            />
-          </FormGroup>
             
-        {this.state.edit ? 
-          (<Button
-            block
-            className = "button is-link"
-            type="submit"
-            disabled= {false}
-            onClick={e=>this.handleSubmit(e)}
-            >
-            Save Changes
-          </Button> )
-          :
-              (<Button
+
+              <Button
                 block
                 className = "button is-link"
-                onClick={e=>this.edit()}
+                onClick={e=>this.props.edit()}
               >
                 Edit
-              </Button>)
-}
+              </Button>
 
         </Form>
 
       </div>
-    );
-    }
+  
+        )
+      }
 }
