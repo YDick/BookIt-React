@@ -1,10 +1,25 @@
 import React from 'react';
 
-export default function Email() {
+export default class Email extends React.Component {
 
-    return(
-        <div>
-            
-        </div>
-    )
+    constructor(props){
+        super(props);
+        this.state = {
+            sender: '',
+            recipient: '',
+            message: ''
+        }
+      }
+
+
+
+    render()  {
+
+        return(
+            <React.Fragment>
+                
+            </React.Fragment>
+        )
+    }
+
 }

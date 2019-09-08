@@ -25,7 +25,6 @@ export default class Signup extends Component {
       }
 
       validateForm() {
-
         return (
           this.state.email.length > 0 &&
           this.state.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
