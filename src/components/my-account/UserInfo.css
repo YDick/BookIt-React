@@ -5,3 +5,7 @@ label {
 img {
     padding: 10px;
 }
+
+.postalInput {
+    text-align: center;
+}

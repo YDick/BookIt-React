@@ -128,84 +128,53 @@ export default class UserInfo extends Component {
       <Form.Row>
           <Form.Group controlId="city" as={Col}>
             <Form.Label>City</Form.Label>
-            {this.state.edit ? 
-                (<Form.Control
-                    autoFocus
-                    type="text"
-                    value={this.state.city}
-                    onChange={this.handleChange}
-                    />)
-                :
-                    (<Form.Control
+              <Form.Control
                     readOnly
                     autoFocus
                     plaintext
+                    className="postalInput"
                     type="text"
                     value={this.state.city}
-                />)
-            }
+
+                />
           </Form.Group>
 
           <Form.Group controlId="province" as={Col}>
             <Form.Label>Province</Form.Label>
-            {this.state.edit ? 
-                (<Form.Control
-                    autoFocus
-                    type="text"
-                    value={this.state.province}
-                    onChange={this.handleChange}
-                    />)
-                :
-                    (<Form.Control
+              <Form.Control
                     readOnly
                     autoFocus
                     plaintext
                     type="text"
                     value={this.state.province}
-                />)
-            }
+                    className="postalInput"
+                />
           </Form.Group>
 
 
           <Form.Group controlId="country" as={Col}>
             <Form.Label>Country</Form.Label>
-            {this.state.edit ? 
-                (<Form.Control
-                    autoFocus
-                    type="text"
-                    value={this.state.country}
-                    onChange={this.handleChange}
-                    />)
-                :
-                    (<Form.Control
+              <Form.Control
                     readOnly
                     autoFocus
                     plaintext
+                    className="postalInput"
                     type="text"
                     value={this.state.country}
-                />)
-            }
+                />
           </Form.Group>
       </Form.Row>
 
           <FormGroup controlId="postal_code" >
             <FormLabel>Postal Code</FormLabel>
-            {this.state.edit ? 
-                (<Form.Control
-                    autoFocus
-                    type="text"
-                    value={this.state.postal_code}
-                    onChange={this.handleChange}
-                    />)
-                :
-                    (<Form.Control
+                    <Form.Control
                     readOnly
                     autoFocus
                     plaintext
+                    className="postalInput"
                     type="text"
                     value={this.state.postal_code}
-                />)
-            }
+                />
           </FormGroup>
             
 

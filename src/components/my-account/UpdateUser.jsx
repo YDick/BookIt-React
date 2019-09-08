@@ -162,8 +162,10 @@ export default class UpdateUser extends Component {
                 <Form.Control
                     autoFocus
                     type="text"
+                    className="postalInput"
                     value={this.state.city}
                     onChange={this.handleChange}
+
                     />
           </Form.Group>
 
@@ -174,6 +176,7 @@ export default class UpdateUser extends Component {
                     type="text"
                     value={this.state.province}
                     onChange={this.handleChange}
+                    className="postalInput"
                     />
           </Form.Group>
 
@@ -185,6 +188,7 @@ export default class UpdateUser extends Component {
                     type="text"
                     value={this.state.country}
                     onChange={this.handleChange}
+                    className="postalInput"
                     />
           </Form.Group>
       </Form.Row>
@@ -196,6 +200,7 @@ export default class UpdateUser extends Component {
                     type="text"
                     value={this.state.postal_code}
                     onChange={this.handleChange}
+                    className="postalInput"
                     />
           </FormGroup>
 
