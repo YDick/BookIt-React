@@ -5,6 +5,8 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
 
+import EmailFriends from './components/email/EmailFriends'
+
 
 
 class App extends React.Component {
@@ -22,6 +24,8 @@ class App extends React.Component {
         <Router>
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
+
+          <Route path="/email" exact component={EmailFriends} />
         </Router>
       </div>
     );
