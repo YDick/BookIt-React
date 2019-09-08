@@ -209,16 +209,33 @@ export default class UpdateUser extends Component {
             />
           </FormGroup>
             
+            <Row>
+                <Col sm="6">
+                <Button
+                    block
+                    className = "button is-link"
+                    variant="outline-secondary"
+                    onClick={e=>this.props.edit()}
+                    >
+                    Cancel
+                </Button>
+                </Col>
 
-          <Button
-            block
-            className = "button is-link"
-            type="submit"
-            disabled= {false}
-            onClick={e=>this.handleSubmit(e)}
-            >
-            Save Changes
-          </Button> 
+                <Col sm="6">
+                <Button
+                    block
+                    className = "button is-link"
+                    type="submit"
+                    disabled= {false}
+                    onClick={e=>this.handleSubmit(e)}
+                    >
+                    Save Changes
+                </Button> 
+                </Col>
+
+
+            </Row>
+          
 
         </Form>
 
