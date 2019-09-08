@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import Form from "../mapForm/form";
+import Carousel from './carousel/carousel'
 
 class GoogleMaps extends Component {
   constructor(props) {
@@ -68,11 +69,11 @@ class GoogleMaps extends Component {
           });
           googleMapsClient
             .geocode({
-              address: `${(loginAddress.address_line1,
-              loginAddress.city,
-              loginAddress.province,
-              loginAddress.postal_code,
-              loginAddress.country)}`
+              address: `${loginAddress.address_line1}
+              ${loginAddress.city}
+              ${loginAddress.province}
+              ${loginAddress.postal_code}
+              ${loginAddress.country}`
             })
             .asPromise()
             .then(response => {
@@ -186,11 +187,16 @@ class GoogleMaps extends Component {
       });
   };
 
+  
+
   render() {
+   
     return (
-      <div
-        style={{ display: "flex", flexDirection: "flexEnd", flexWrap: "wrap" }}
+      <div 
+        // style={{ display: "flex", flexDirection: "flexEnd", flexWrap: "wrap" }}
       >
+        
+        <br/>
         <Form
           submit={this.submit}
           streetAddress={this.state.streetAddress}
@@ -198,7 +204,7 @@ class GoogleMaps extends Component {
           postalCode={this.state.postalCode}
           dataChange={this.onInputChanges}
         />
-
+        <br/><br/>
         {this.state.lat && this.state.map}
 
         {this.state.lat != null && (
@@ -215,16 +221,19 @@ class GoogleMaps extends Component {
             }}
             containerStyle={{
               width: "100%",
-              height: "250px",
-              position: "relative"
+              height: "50px",
+              position: "relative",
+              // display: "flex",
+              // justifyContent: "flexEnd"
             }}
             style={{
-              height: "50vh",
-              width: "50vh",
-              // marginLeft: "800px",
-              // marginRight: "auto",
-              display: "flex",
-              justifyContent: "flexEnd"
+              height: "79vh",
+              width: "150vh",
+              
+              marginLeft: "auto",
+              marginRight: "auto",
+              // display: "flex",
+              // justifyContent: "center"
             }}
             zoom={15}
           >
@@ -233,8 +242,8 @@ class GoogleMaps extends Component {
                 key={i}
                 onClick={this.onMarkerClick}
                 position={{ lat: e.lat, lng: e.lng }}
-                title={`${e.bookClub.address.address_line1}  ${e.bookClub.address.address_line2}`}
-                name={e.bookClub.address.city}
+                title={`${e.bookClub.address.address_line1}`}
+                name={e.bookClub.name}
               />
             ))}
 
@@ -243,13 +252,15 @@ class GoogleMaps extends Component {
               visible={this.state.showingInfoWindow}
             >
               <div>
-                <h1>{this.state.selectedPlace.name}</h1>
+                {console.log("sele",this.state.selectedPlace)}
+                <h3>{this.state.selectedPlace.name}</h3>
               </div>
             </InfoWindow>
           </Map>
         )
-        // </div>
-        }
+        } 
+<Carousel />
+
       </div>
     );
   }

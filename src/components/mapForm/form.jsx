@@ -5,11 +5,11 @@ function MapForm(props) {
 
   console.log("hello formmmm::::::::::::::::::");
   return (
-    <React.Fragment>
+    <React.Fragment >
    
-      <Form>
+      <Form >
   <Row>
-    <Col>
+    <Col     md = {{ span:3, offset: 2 }} >
       <Form.Control placeholder=" Street address "
             type="text"
             name="street number"

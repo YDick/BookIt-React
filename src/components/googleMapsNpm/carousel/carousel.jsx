@@ -34,176 +34,44 @@ class clubCarousel extends Component {
       })
       .catch(error => console.error("Error:", error));
 
+
+      
   }
 
   render() {
     return (
+<div>
 
-<Carousel>
-  {this.state.clubs.length > 0 && 
+{/* in order to make the coursel not go straight to the bottom */}
+  {/* {this.props.lat != null && 
+   <React.Fragment>
+     </React.Fragment>} */}
+  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+   <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> 
+   
+
+  <Carousel>
+{this.state.clubs.reverse().map((club,i) =>(
+  i < 10 &&
   <Carousel.Item>
     <img
      style={{width: '800px', height: '300px', margin: 'auto'}}
      className="d-block w-100"
-      src="https://www.chrislatta.org/images/graphics/backgrounds/solid-backgrounds-gray-808080-4096x2160-TV4K.png?v=20171211195613"
+      src="https://previews.123rf.com/images/lanastocker/lanastocker1706/lanastocker170600593/80479391-stack-of-colorful-books-education-background-back-to-school-book-hardback-colorful-books-on-wooden-t.jpg"
       alt="First club"
     />
     <Carousel.Caption>
-      <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -1].name}</h3></Link>
-      <p>{this.state.clubs[this.state.clubs.length -1].address.city}</p>
+      <Link to="/login"><h3>{club.name}</h3></Link>
+      <h5 style={{color: "black"}}> {club.address.address_line1}, {club.address.city} </h5>
     </Carousel.Caption>
   </Carousel.Item>
-  }
-    {this.state.clubs.length > 1 && 
-  <Carousel.Item>
-    <img
-     style={{width: '800px', height: '300px', margin: 'auto'}}
-      className="d-block w-100"
-      src="https://www.chrislatta.org/images/graphics/backgrounds/solid-backgrounds-gray-808080-4096x2160-TV4K.png?v=20171211195613"
-      alt="second club"
-    />
-    <Carousel.Caption>
-      <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -2].name}</h3></Link>
-      <p>{this.state.clubs[this.state.clubs.length -2].address.city}</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-    }
-        {this.state.clubs.length > 2 && 
-  <Carousel.Item>
-    <img
-         style={{width: '800px', height: '300px', margin: 'auto'}}
-      className="d-block w-100"
-      src="https://www.chrislatta.org/images/graphics/backgrounds/solid-backgrounds-gray-808080-4096x2160-TV4K.png?v=20171211195613"
-      alt="Second slide"
-    />
+  
+  )
+  )}
+  </Carousel>
 
-    <Carousel.Caption>
-    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -3].name}</h3></Link>
-      <p>{this.state.clubs[this.state.clubs.length -3].address.city}</p>
-    </Carousel.Caption>
-  </Carousel.Item>}
-
-  {this.state.clubs.length > 3 && 
-  <Carousel.Item>
-    <img
-         style={{width: '800px', height: '300px', margin: 'auto'}}
-      className="d-block w-100"
-      src="https://www.chrislatta.org/images/graphics/backgrounds/solid-backgrounds-gray-808080-4096x2160-TV4K.png?v=20171211195613"
-      alt="Fourth slide"
-    />
-
-    <Carousel.Caption>
-    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -4].name}</h3></Link>
-      <p>{this.state.clubs[this.state.clubs.length -4].address.city}</p>
-    </Carousel.Caption>
-  </Carousel.Item>}
-
-  {this.state.clubs.length > 4 && 
-  <Carousel.Item>
-    <img
-         style={{width: '800px', height: '300px', margin: 'auto'}}
-      className="d-block w-100"
-      src="https://www.chrislatta.org/images/graphics/backgrounds/solid-backgrounds-gray-808080-4096x2160-TV4K.png?v=20171211195613"
-      alt="Fith club"
-    />
-
-    <Carousel.Caption>
-    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -5].name}</h3></Link>
-      <p>{this.state.clubs[this.state.clubs.length -5].address.city}</p>
-    </Carousel.Caption>
-  </Carousel.Item>}
-
-  {this.state.clubs.length > 5 && 
-  <Carousel.Item>
-    <img
-         style={{width: '800px', height: '300px', margin: 'auto'}}
-      className="d-block w-100"
-      src="https://www.chrislatta.org/images/graphics/backgrounds/solid-backgrounds-gray-808080-4096x2160-TV4K.png?v=20171211195613"
-      alt="sixth club"
-    />
-
-    <Carousel.Caption>
-    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -6].name}</h3></Link>
-      <p>{this.state.clubs[this.state.clubs.length -6].address.city}</p>
-    </Carousel.Caption>
-  </Carousel.Item>}
-
-{this.state.clubs.length > 6 && 
-  <Carousel.Item>
-    <img
-         style={{width: '800px', height: '300px', margin: 'auto'}}
-      className="d-block w-100"
-      src="https://www.chrislatta.org/images/graphics/backgrounds/solid-backgrounds-gray-808080-4096x2160-TV4K.png?v=20171211195613"
-      alt="seventh club"
-    />
-
-    <Carousel.Caption>
-    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -7].name}</h3></Link>
-      <p>{this.state.clubs[this.state.clubs.length -7].address.city}</p>
-    </Carousel.Caption>
-  </Carousel.Item>}
-
-  {this.state.clubs.length > 7 && 
-  <Carousel.Item>
-    <img
-         style={{width: '800px', height: '300px', margin: 'auto'}}
-      className="d-block w-100"
-      src="https://www.chrislatta.org/images/graphics/backgrounds/solid-backgrounds-gray-808080-4096x2160-TV4K.png?v=20171211195613"
-      alt="eighth club"
-    />
-
-    <Carousel.Caption>
-    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -8].name}</h3></Link>
-      <p>{this.state.clubs[this.state.clubs.length -8].address.city}</p>
-    </Carousel.Caption>
-  </Carousel.Item>}
-
-  {this.state.clubs.length > 7 && 
-  <Carousel.Item>
-    <img
-         style={{width: '800px', height: '300px', margin: 'auto'}}
-      className="d-block w-100"
-      src="https://www.chrislatta.org/images/graphics/backgrounds/solid-backgrounds-gray-808080-4096x2160-TV4K.png?v=20171211195613"
-      alt="eighth club"
-    />
-
-    <Carousel.Caption>
-    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -8].name}</h3></Link>
-      <p>{this.state.clubs[this.state.clubs.length -8].address.city}</p>
-    </Carousel.Caption>
-  </Carousel.Item>}
-
-  {this.state.clubs.length > 8 && 
-  <Carousel.Item>
-    <img
-         style={{width: '800px', height: '300px', margin: 'auto'}}
-      className="d-block w-100"
-      src="https://www.chrislatta.org/images/graphics/backgrounds/solid-backgrounds-gray-808080-4096x2160-TV4K.png?v=20171211195613"
-      alt="nineth club"
-    />
-
-    <Carousel.Caption>
-    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -9].name}</h3></Link>
-      <p>{this.state.clubs[this.state.clubs.length -9].address.city}</p>
-    </Carousel.Caption>
-  </Carousel.Item>}
-
-{this.state.clubs.length > 9 && 
-  <Carousel.Item>
-    <img
-         style={{width: '800px', height: '300px', margin: 'auto'}}
-      className="d-block w-100"
-      src="https://www.chrislatta.org/images/graphics/backgrounds/solid-backgrounds-gray-808080-4096x2160-TV4K.png?v=20171211195613"
-      alt="tenth club"
-    />
-
-    <Carousel.Caption>
-    <Link to="/login"><h3>{this.state.clubs[this.state.clubs.length -10].name}</h3></Link>
-      <p>{this.state.clubs[this.state.clubs.length -10].address.city}</p>
-    </Carousel.Caption>
-  </Carousel.Item>}
-</Carousel>
-
+<br/><br/><br/><br/>
+</div>
 
     )}
 
