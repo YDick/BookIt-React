@@ -24,7 +24,7 @@ class clubCarousel extends Component {
         
         this.setState(
           {
-            clubs: bookClubs
+            clubs: bookClubs.reverse()
           },
           () => {
             console.log("State::::", this.state.clubs);
@@ -51,7 +51,7 @@ class clubCarousel extends Component {
    
 
   <Carousel>
-{this.state.clubs.reverse().map((club,i) =>(
+{this.state.clubs.map((club,i) =>(
   i < 10 &&
   <Carousel.Item>
     <img

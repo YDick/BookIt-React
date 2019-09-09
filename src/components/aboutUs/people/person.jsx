@@ -7,7 +7,7 @@ function Person(props) {
   return (
     <React.Fragment >
       <Container>
-        <div >
+      <React.Fragment >
           <Row>
             <Col xs={6} md={4}>
               <Image width="215" height="215" src={props.image} roundedCircle />
@@ -19,13 +19,15 @@ function Person(props) {
                   <Card.Title>{props.title}</Card.Title>
                   <Card.Text>{props.text}</Card.Text>
                 </Card.Body>
-              </Card>
-
-              <Icons/>
-              
+              </Card>              
             </Col>
+            
           </Row>
-        </div>
+          <br/>
+          <Row>
+              <Icons github = {props.github} linkedin={props.linkedin}/>
+            </Row>
+          </React.Fragment >
       </Container>
     </React.Fragment>
   );
