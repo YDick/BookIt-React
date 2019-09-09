@@ -36,9 +36,16 @@ class NavBar extends React.Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto ">
+            
+          <LinkContainer to="/aboutus">
+              <Nav.Link active={false}>About us </Nav.Link>
+            </LinkContainer>
+
             <LinkContainer to="/home">
               <Nav.Link active={false}>Home </Nav.Link>
             </LinkContainer>
+
+            
 
             {/* if logged out: */}
             {sessionStorage.length === 0 && (
