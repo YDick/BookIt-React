@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button, FormGroup, FormLabel, Col, Form } from "react-bootstrap";
+import '../login/Login.css'
 
 export default class Email extends React.Component {
 
     constructor(props){
         super(props);
         this.state = {
-            sender: '',
             recipientName: '',
             recipientEmail: "",
             message: ''
@@ -48,8 +48,13 @@ export default class Email extends React.Component {
           .then(data=> {
               console.log('Success:', data);
               // eslint-disable-next-line eqeqeq
-              if(data.email == 'has already been taken'){
-                alert('email'+data.email)
+              if(data.msg == "email sent"){
+                alert("Email sent!");
+                this.setState({
+                    recipientName: '',
+                    recipientEmail: "",
+                    message: ''
+                })
               }
             })
           .catch(error=>console.error('Error:', error));
@@ -60,8 +65,8 @@ export default class Email extends React.Component {
     render()  {
 
         return(
-            <React.Fragment>
-                <h1>Invite your friends!</h1>
+            <div className='Login'>
+                <h3>Invite your friends!</h3>
 
                 <Form onSubmit={this.handleSubmit}>
                     
@@ -91,7 +96,7 @@ export default class Email extends React.Component {
                     <FormLabel>Message</FormLabel>
                     <Form.Control
                             autoFocus
-                            type="text"
+                            as="textarea"
                             placeholder="Add a personal note! (optional)"
                             value={this.state.message}
                             onChange={this.handleChange}
@@ -109,7 +114,7 @@ export default class Email extends React.Component {
                 </Form>
 
                 
-            </React.Fragment>
+            </div>
         )
     }
 
