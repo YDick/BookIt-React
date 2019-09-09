@@ -5,7 +5,8 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
 // import CanadaPost from './components/googleMapsNpm/canadaPostSearch/canadaPost'
-import Person from './components/aboutUs/people/person'
+// import Person from './components/aboutUs/people/person'
+import AboutUs from './components/aboutUs/aboutUs'
 
 class App extends React.Component  {
   constructor(props) {
@@ -32,7 +33,7 @@ render() {
     <MainPage/>
   )
 )}/>
-          <Route path="/person" exact component={Person} />
+          <Route path="/AboutUs" exact component={AboutUs} />
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
    
