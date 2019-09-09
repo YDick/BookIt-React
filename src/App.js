@@ -1,12 +1,20 @@
 
 import React from 'react';
 import './App.css';
+
 import AccountStuff from './components/accountStuffHOC/AccountStuff';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+
 import NavBar from "./components/navBar/navBar";
+
+import MainPage from './components/pages/mainPage'
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
+// import CanadaPost from './components/googleMapsNpm/canadaPostSearch/canadaPost'
+// import Person from './components/aboutUs/people/person'
+import AboutUs from './components/aboutUs/aboutUs'
+
 
 
 import EmailFriends from './components/email/EmailFriends'
@@ -22,7 +30,10 @@ class App extends React.Component {
     this.state = {
       loggedIn: false
     }
-  }
+
+ 
+    
+
 
   logIn=()=>{
     this.setState({
@@ -54,6 +65,18 @@ class App extends React.Component {
             {/* need home route in addition to "/" route for navBars active links */}
             <Route path="/home" exact component={Signup}/>
       
+      
+<Route exact path="/" render={() => (
+  sessionStorage.length === 0 ? (
+    <Redirect to="/login"/>
+  ) : (
+    <MainPage/>
+  )
+)}/>
+      
+          <Route path="/AboutUs" exact component={AboutUs} />
+      
+      
            <Route path="/login" exact 
                  render={props => <Login {...props} logIn={this.logIn} />} />
           <Route path="/signup" exact component={Signup} />
@@ -69,6 +92,9 @@ class App extends React.Component {
       </div>
     );
   }
+
+
+
 }
 
 export default App;
