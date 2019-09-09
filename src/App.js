@@ -7,7 +7,13 @@ import NavBar from "./components/navBar/navBar";
 
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
+
+
+import EmailFriends from './components/email/EmailFriends'
+
+
 import MyAccountHOC from './components/my-account/myAccountHOC';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -51,9 +57,14 @@ class App extends React.Component {
            <Route path="/login" exact 
                  render={props => <Login {...props} logIn={this.logIn} />} />
           <Route path="/signup" exact component={Signup} />
+
+
+          <Route path="/email" exact component={EmailFriends} />
+
           <Route path="/MyAccount" exact component={MyAccountHOC} />
             
           </Switch>
+
         </Router>
       </div>
     );
