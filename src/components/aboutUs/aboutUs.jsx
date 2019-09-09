@@ -17,7 +17,7 @@ function AboutUs(props) {
                 image={Larisa}
                 header="LARISA GRANAT"
                 title="Full Stack Developer"
-                text="Larisa is hardworking and passionate."
+                text="Larisa is hardworking and passionate. In her free time, Larisa takes joy in playing with her children and walking in nature"
                 github= "https://github.com/larisagranat"
               />
             </Col>
@@ -26,7 +26,7 @@ function AboutUs(props) {
                 image={Yehudis}
                 header="YEHUDIS DICK"
                 title="Full Stack Developer"
-                text="Yehudis is a problem solver and a team player."
+                text="Yehudis is a problem solver and a team player. In her free time, Yehudis enjoys participating in skiing and reading a good book. "
                 linkedin="https://www.linkedin.com/in/yehudis-dick/"
                 github="https://github.com/YDick"
               />
@@ -36,7 +36,7 @@ function AboutUs(props) {
                 image={Yudi}
                 header="YUDI ROSENZWEIG"
                 title="Full Stack Developer"
-                text="Yudi is adaptable and possitive."
+                text="Yudi is adaptable and possitive. In his free time Yudi occupies himself with playing basketball and rollerblading"
                 github= "https://github.com/YudiR"
                 linkedin= "https://www.linkedin.com/in/yudi-rosenzweig-a10617182/"
               />

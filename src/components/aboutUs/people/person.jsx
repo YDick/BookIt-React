@@ -21,11 +21,13 @@ function Person(props) {
                 </Card.Body>
               </Card>              
             </Col>
-            
+
           </Row>
-          <br/>
+          
           <Row>
-              <Icons github = {props.github} linkedin={props.linkedin}/>
+            <Col >
+            <Icons github = {props.github} linkedin={props.linkedin}/>
+            </Col>
             </Row>
           </React.Fragment >
       </Container>
