@@ -1,10 +1,9 @@
 
 import React from 'react';
 import './App.css';
-import AccountStuff from './components/accountStuffHOC/AccountStuff';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+// import AccountStuff from './components/accountStuffHOC/AccountStuff';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import NavBar from "./components/navBar/navBar";
-
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
 import MyAccountHOC from './components/my-account/myAccountHOC';
@@ -41,12 +40,14 @@ class App extends React.Component {
 
          
 
-          <NavBar />
-          <AccountStuff logOut={this.logOut}/>
+          <NavBar logOut={this.logOut}/>
       
           <Switch>
             {/* need home route in addition to "/" route for navBars active links */}
             <Route path="/home" exact component={Signup}/>
+            <Route exact path="/signOut" render={() => (  <Redirect to="/"/>)}/>
+
+
       
            <Route path="/login" exact 
                  render={props => <Login {...props} logIn={this.logIn} />} />
