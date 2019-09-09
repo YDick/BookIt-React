@@ -25,7 +25,6 @@ export default class Signup extends Component {
       }
 
       validateForm() {
-
         return (
           this.state.email.length > 0 &&
           this.state.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) &&
@@ -91,7 +90,10 @@ export default class Signup extends Component {
           }).then(e=>e.json())
           .then(data=> {
               console.log('Success:', data);
-              if(data.email == 'has already been taken'){
+
+
+              if(data.email === 'has already been taken'){
+
                 alert('email'+data.email)
               }
             })
@@ -110,7 +112,7 @@ export default class Signup extends Component {
             <FormControl
               autoFocus
               type="text"
-              placeholder="Name"
+              placeholder="Katniss Everdeen"
               value={this.state.name}
               onChange={this.handleChange}
             />
@@ -121,7 +123,7 @@ export default class Signup extends Component {
             <FormControl
               autoFocus
               type="email"
-              placeholder="Email"
+              placeholder="BookLover123@gmail.com"
            value={this.state.email}
             onChange={this.handleChange}
             />
@@ -199,7 +201,7 @@ export default class Signup extends Component {
           <FormGroup controlId="confirmPassword">
             <FormLabel>Confirm Password</FormLabel>
             <FormControl
-              placeholder="Password"
+              placeholder="Confirm Password"
               value={this.state.confirmPassword}
               onChange={this.handleChange}
               type="password"
