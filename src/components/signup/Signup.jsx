@@ -91,7 +91,7 @@ export default class Signup extends Component {
           }).then(e=>e.json())
           .then(data=> {
               console.log('Success:', data);
-              if(data.email == 'has already been taken'){
+              if(data.email === 'has already been taken'){
                 alert('email'+data.email)
               }
             })
