@@ -1,7 +1,9 @@
 import React from "react";
 import "./App.css";
+
 import AccountStuff from "./components/accountStuffHOC/AccountStuff";
 import NavBar from "./components/navBar/navBar";
+
 import MainPage from "./components/pages/mainPage";
 import {
   BrowserRouter as Router,
@@ -9,13 +11,18 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
+
 // import AccountStuff from './components/accountStuffHOC/AccountStuff';
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
 // import CanadaPost from './components/googleMapsNpm/canadaPostSearch/canadaPost'
 // import Person from './components/aboutUs/people/person'
 import AboutUs from "./components/aboutUs/aboutUs";
+
 import EmailFriends from "./components/email/EmailFriends";
+
+
+
 import MyAccountHOC from "./components/my-account/myAccountHOC";
 
 class App extends React.Component {
@@ -47,19 +54,25 @@ class App extends React.Component {
 
           <Switch>
             {/* need home route in addition to "/" route for navBars active links */}
+
+            <Route path="/home" exact component={Signup} />
+
             <Route exact path="/signOut" render={() => <Redirect to="/" />} />
 
             <Route
               exact
               path="/"
               render={() =>
+
                 !sessionStorage.JWT ? (
+
                   <Redirect to="/login" />
                 ) : (
                   <MainPage />
                 )
               }
             />
+
 
             <Route
               exact
@@ -74,6 +87,7 @@ class App extends React.Component {
             />
 
             <Route path="/aboutus" exact component={AboutUs} />
+
 
             <Route
               path="/login"
