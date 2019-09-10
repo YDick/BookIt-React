@@ -48,18 +48,18 @@ class NavBar extends React.Component {
             
 
             {/* if logged out: */}
-            {sessionStorage.length === 0 && (
+            {!sessionStorage.JWT && (
               <LinkContainer to="/login">
                 <Nav.Link active={false}>Log in</Nav.Link>
               </LinkContainer>
             )}
-            {sessionStorage.length === 0 && (
+            {!sessionStorage.JWT && (
               <LinkContainer to="/signup">
                 <Nav.Link active={false}>Sign up </Nav.Link>
               </LinkContainer>
             )}
             {/* If logged in */}
-            {sessionStorage.length === 1 && (
+            {sessionStorage.JWT && (
               <LinkContainer to="/signOut">
                 <Nav.Link active={false} onClick={e => this.Logout()}>
                   Sign Out{" "}
@@ -67,7 +67,7 @@ class NavBar extends React.Component {
               </LinkContainer>
             )}
 
-            {sessionStorage.length === 1 && (
+            {sessionStorage.JWT && (
               <LinkContainer to="/MyAccount">
                 <Nav.Link active={false}>
                   My Account

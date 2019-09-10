@@ -53,7 +53,7 @@ class App extends React.Component {
               exact
               path="/"
               render={() =>
-                sessionStorage.length === 0 ? (
+                !sessionStorage.JWT ? (
                   <Redirect to="/login" />
                 ) : (
                   <MainPage />
@@ -65,7 +65,7 @@ class App extends React.Component {
               exact
               path="/home"
               render={() =>
-                sessionStorage.length === 0 ? (
+                !sessionStorage.JWT ? (
                   <Redirect to="/login" />
                 ) : (
                   <MainPage />
