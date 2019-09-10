@@ -4,7 +4,7 @@ import React from "react";
 function Icons(props) {
   
   return (
-    <div style={{position: 'relative'}}>
+    <div style={{textAlign: "initial"}}>
       
       <Container>
         <Row>
