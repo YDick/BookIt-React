@@ -4,7 +4,7 @@ import React from "react";
 function Icons(props) {
   
   return (
-    <React.Fragment>
+    <div style={{position: 'relative'}}>
       
       <Container>
         <Row>
@@ -28,7 +28,7 @@ function Icons(props) {
           </Col>
         </Row>
       </Container>
-      </React.Fragment >
+      </div >
   );
 }
 
