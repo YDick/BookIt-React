@@ -36,23 +36,30 @@ class NavBar extends React.Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto ">
+            
+          <LinkContainer to="/aboutus">
+              <Nav.Link active={false}>About us </Nav.Link>
+            </LinkContainer>
+
             <LinkContainer to="/home">
               <Nav.Link active={false}>Home </Nav.Link>
             </LinkContainer>
 
+            
+
             {/* if logged out: */}
-            {sessionStorage.length === 0 && (
+            {!sessionStorage.JWT && (
               <LinkContainer to="/login">
                 <Nav.Link active={false}>Log in</Nav.Link>
               </LinkContainer>
             )}
-            {sessionStorage.length === 0 && (
+            {!sessionStorage.JWT && (
               <LinkContainer to="/signup">
                 <Nav.Link active={false}>Sign up </Nav.Link>
               </LinkContainer>
             )}
             {/* If logged in */}
-            {sessionStorage.length === 1 && (
+            {sessionStorage.JWT && (
               <LinkContainer to="/signOut">
                 <Nav.Link active={false} onClick={e => this.Logout()}>
                   Sign Out{" "}
@@ -60,7 +67,7 @@ class NavBar extends React.Component {
               </LinkContainer>
             )}
 
-            {sessionStorage.length === 1 && (
+            {sessionStorage.JWT && (
               <LinkContainer to="/MyAccount">
                 <Nav.Link active={false}>
                   My Account
