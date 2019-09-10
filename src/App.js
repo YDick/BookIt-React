@@ -2,12 +2,16 @@
 import React from 'react';
 import './App.css';
 
+
 import AccountStuff from './components/accountStuffHOC/AccountStuff';
 
 import NavBar from "./components/navBar/navBar";
 
 import MainPage from './components/pages/mainPage'
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
+
+// import AccountStuff from './components/accountStuffHOC/AccountStuff';
+
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
 // import CanadaPost from './components/googleMapsNpm/canadaPostSearch/canadaPost'
@@ -57,12 +61,14 @@ class App extends React.Component {
 
          
 
-          <NavBar />
-          <AccountStuff logOut={this.logOut}/>
+          <NavBar logOut={this.logOut}/>
       
           <Switch>
             {/* need home route in addition to "/" route for navBars active links */}
             <Route path="/home" exact component={Signup}/>
+            <Route exact path="/signOut" render={() => (  <Redirect to="/"/>)}/>
+
+
       
       
 <Route exact path="/" render={() => (
