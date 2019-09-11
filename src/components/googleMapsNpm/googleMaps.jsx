@@ -3,6 +3,7 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import Form from "../mapForm/form";
 import Carousel from "./carousel/carousel";
 import CpForm from "../mapForm/canadaPost";
+import { Link, BrowserRouter } from 'react-router-dom'
 
 class GoogleMaps extends Component {
   constructor(props) {
@@ -38,6 +39,11 @@ class GoogleMaps extends Component {
         break;
     }
   };
+
+  // route for marker
+  MarkerClick = id => {
+console.log('hey makrer cliclciclic')
+  }
   // canadaPost form
   cpDataChange = data => {
     this.setState({ cpAddress: data });
@@ -126,6 +132,7 @@ class GoogleMaps extends Component {
       .then(data => {
         let bookClubs = data.book_clubs;
         console.log("let", bookClubs);
+
         bookClubs.forEach(club => {
           const googleMapsClient = require("@google/maps").createClient({
             key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
@@ -236,6 +243,7 @@ class GoogleMaps extends Component {
   };
 
   render() {
+    console.log(this.state.selectedPlace, "selected place!!");
     return (
       <div
       // style={{ display: "flex", flexDirection: "flexEnd", flexWrap: "wrap" }}
@@ -291,6 +299,7 @@ class GoogleMaps extends Component {
           >
             {this.state.markers.map((e, i) => (
               <Marker
+                id={e.bookClub.id}
                 key={i}
                 onClick={this.onMarkerClick}
                 position={{ lat: e.lat, lng: e.lng }}
@@ -304,7 +313,11 @@ class GoogleMaps extends Component {
               visible={this.state.showingInfoWindow}
             >
               <div>
-                <h3>{this.state.selectedPlace.name}</h3>
+                <BrowserRouter>
+               <Link to={"/bookclub/" + this.state.selectedPlace.id}> <h3>
+                {this.state.selectedPlace.name}
+                </h3> </Link>
+                </BrowserRouter>
               </div>
             </InfoWindow>
           </Map>

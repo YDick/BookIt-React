@@ -60,7 +60,7 @@ class clubCarousel extends Component {
       alt="First club"
     />
     <Carousel.Caption>
-      <Link style={{  color: 'black' }} to="/login"><h3>{club.name}</h3></Link>
+      <Link style={{  color: 'black' }} to={"/bookclub/" + club.id} ><h3>{club.name}</h3></Link>
       <h5 style={{color: "black"}}> {club.address.address_line1}, {club.address.city} </h5>
     </Carousel.Caption>
   </Carousel.Item>

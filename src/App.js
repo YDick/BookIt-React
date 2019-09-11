@@ -4,7 +4,7 @@ import "./App.css";
 import AccountStuff from "./components/accountStuffHOC/AccountStuff";
 import NavBar from "./components/navBar/navBar";
 
-import MainPage from "./components/pages/mainPage";
+import MainPage from "./components/googleMapsNpm/googleMaps";
 import {
   BrowserRouter as Router,
   Route,
