@@ -2,6 +2,7 @@
   text-align: center;
 }
 
+
 .carousel {
   width:800px;
   height:300px;
@@ -15,4 +16,6 @@
   to {
     transform: rotate(360deg);
   }
+
+  
 }

@@ -52,7 +52,6 @@ export default class MyBookclubs extends Component {
 
 
           render()  {
-
               return(
                 <div>
                     <h2>My Book Clubs:</h2>
