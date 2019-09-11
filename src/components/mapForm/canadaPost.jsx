@@ -23,7 +23,7 @@ componentWillReceiveProps(nextProps) {
 render(){
   console.log("canada post state!!!",this.state.data)
   return(
-<div style ={{position: 'relative', top: '35px' }}>
+<div style ={{position: 'relative', top: '35px', width: '63%',left:'245px' }}>
       <Form.Control
         size="lg"
         type="text"
