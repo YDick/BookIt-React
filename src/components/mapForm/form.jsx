@@ -1,5 +1,5 @@
 import React from "react";
-import {Form, Button, FormGroup, FormControl, FormLabel, Col, Row} from "react-bootstrap";
+import {Form, Button, Col, Row} from "react-bootstrap";
 
 function MapForm(props) {
 
