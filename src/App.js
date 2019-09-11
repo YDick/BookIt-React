@@ -24,6 +24,7 @@ import EmailFriends from "./components/email/EmailFriends";
 
 
 import MyAccountHOC from "./components/my-account/myAccountHOC";
+import MyBookclubs from "./components/myBookclubs/MyBookclubs";
 
 class App extends React.Component {
   constructor(props) {
@@ -57,15 +58,13 @@ class App extends React.Component {
 
             <Route path="/home" exact component={Signup} />
 
-            <Route exact path="/signOut" render={() => <Redirect to="/" />} />
+            <Route exact path="/signout" render={() => <Redirect to="/" />} />
 
             <Route
               exact
               path="/"
               render={() =>
-
                 !sessionStorage.JWT ? (
-
                   <Redirect to="/login" />
                 ) : (
                   <MainPage />
@@ -97,7 +96,7 @@ class App extends React.Component {
             <Route path="/signup" exact component={Signup} />
 
             <Route path="/email" exact component={EmailFriends} />
-
+            <Route path="/MyClubs" exact component={MyBookclubs} />
             <Route path="/MyAccount" exact component={MyAccountHOC} />
           </Switch>
         </Router>
