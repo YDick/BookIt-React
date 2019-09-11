@@ -40,14 +40,13 @@ class clubCarousel extends Component {
 
   render() {
     return (
-<div>
+<div style={{position:'relative', top: '600px'}}>
 
 {/* in order to make the coursel not go straight to the bottom */}
   {/* {this.props.lat != null && 
    <React.Fragment>
      </React.Fragment>} */}
-  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-   <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> 
+
    
 
   <Carousel>

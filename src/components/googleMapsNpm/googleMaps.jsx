@@ -41,23 +41,23 @@ class GoogleMaps extends Component {
   // canadaPost form
   cpDataChange = data => {
     this.setState({ cpAddress: data });
-if(data.length > 4 ){
-    fetch(
-      `https://ws1.postescanada-canadapost.ca/AddressComplete/Interactive/Find/v2.10/json3.ws?key=TT23-AX96-JM63-MZ18&SearchTerm=${this.state.cpAddress}`
-    )
-      .then(e => e.json())
-      .then(e => {
-        this.setState({ dropDownAddress: e }, () => {
-          console.log("column state", this.state.dropDownAddress);
+    if (data.length > 4) {
+      fetch(
+        `https://ws1.postescanada-canadapost.ca/AddressComplete/Interactive/Find/v2.10/json3.ws?key=TT23-AX96-JM63-MZ18&SearchTerm=${this.state.cpAddress}`
+      )
+        .then(e => e.json())
+        .then(e => {
+          this.setState({ dropDownAddress: e }, () => {
+            console.log("column state", this.state.dropDownAddress);
+          });
         });
-      });
+    }
   };
-}
 
   // form click
   formClick = data => {
-    this.setState({cpAddress: data})
-  }
+    this.setState({ cpAddress: data });
+  };
 
   componentDidMount() {
     // current user:
@@ -205,7 +205,6 @@ if(data.length > 4 ){
           }
         );
       });
-   
   };
 
   submit = () => {
@@ -305,7 +304,6 @@ if(data.length > 4 ){
               visible={this.state.showingInfoWindow}
             >
               <div>
-               
                 <h3>{this.state.selectedPlace.name}</h3>
               </div>
             </InfoWindow>
