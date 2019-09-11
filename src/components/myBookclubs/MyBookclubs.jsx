@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Card, CardGroup, Button} from "react-bootstrap";
+import {LinkContainer} from "react-router-bootstrap";
 import './myBookclubs.css';
 
 export default class MyBookclubs extends Component {
@@ -65,7 +66,10 @@ export default class MyBookclubs extends Component {
                           <Card.Text>
                             {club.description}
                           </Card.Text>
-                          <Button variant="primary">Go To Club Page</Button>
+                          <LinkContainer to={"/bookclubs/"+club.id}>
+                            <Button  class="button" variant="primary">Go To Club Page</Button>
+                          </LinkContainer>
+
                         </Card.Body>
                         <Card.Footer className="text-muted">
                                 Genre: {club.genre}
@@ -85,7 +89,9 @@ export default class MyBookclubs extends Component {
                           <Card.Text>
                             {club.description}
                           </Card.Text>
+                          <LinkContainer to={"/bookclubs/"+club.id}>
                           <Button variant="primary">Go To Club Page</Button>
+                          </LinkContainer>
                         </Card.Body>
                         <Card.Footer className="text-muted">
                                 Genre: {club.genre}
