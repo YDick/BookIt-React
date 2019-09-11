@@ -45,6 +45,10 @@ class NavBar extends React.Component {
               <Nav.Link active={false}>Home </Nav.Link>
             </LinkContainer>
 
+            <LinkContainer to="/MyClubs">
+              <Nav.Link active={false}>Clubs</Nav.Link>
+            </LinkContainer>
+
             
 
             {/* if logged out: */}
