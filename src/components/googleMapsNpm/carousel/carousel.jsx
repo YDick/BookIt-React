@@ -57,11 +57,11 @@ class clubCarousel extends Component {
     <img
      style={{width: '800px', height: '300px', margin: 'auto'}}
      className="d-block w-100"
-      src="https://previews.123rf.com/images/lanastocker/lanastocker1706/lanastocker170600593/80479391-stack-of-colorful-books-education-background-back-to-school-book-hardback-colorful-books-on-wooden-t.jpg"
+      src="https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547__340.jpg"
       alt="First club"
     />
     <Carousel.Caption>
-      <Link to="/login"><h3>{club.name}</h3></Link>
+      <Link style={{  color: 'black' }} to="/login"><h3>{club.name}</h3></Link>
       <h5 style={{color: "black"}}> {club.address.address_line1}, {club.address.city} </h5>
     </Carousel.Caption>
   </Carousel.Item>

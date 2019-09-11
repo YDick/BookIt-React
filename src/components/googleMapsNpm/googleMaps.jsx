@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import Form from "../mapForm/form";
-import Carousel from './carousel/carousel'
+import Carousel from "./carousel/carousel";
+import CpForm from "../mapForm/canadaPost";
 
 class GoogleMaps extends Component {
   constructor(props) {
@@ -15,10 +16,12 @@ class GoogleMaps extends Component {
       selectedPlace: {},
       streetAddress: "",
       city: "",
-      postalCode: ""
+      postalCode: "",
+      cpAddress: "",
+      dropDownAddress: []
     };
   }
-
+  // regular form
   onInputChanges = data => {
     switch (Object.keys(data)[0]) {
       case "streetAddress":
@@ -35,6 +38,26 @@ class GoogleMaps extends Component {
         break;
     }
   };
+  // canadaPost form
+  cpDataChange = data => {
+    this.setState({ cpAddress: data });
+if(data.length > 4 ){
+    fetch(
+      `https://ws1.postescanada-canadapost.ca/AddressComplete/Interactive/Find/v2.10/json3.ws?key=TT23-AX96-JM63-MZ18&SearchTerm=${this.state.cpAddress}`
+    )
+      .then(e => e.json())
+      .then(e => {
+        this.setState({ dropDownAddress: e }, () => {
+          console.log("column state", this.state.dropDownAddress);
+        });
+      });
+  };
+}
+
+  // form click
+  formClick = data => {
+    this.setState({cpAddress: data})
+  }
 
   componentDidMount() {
     // current user:
@@ -110,7 +133,8 @@ class GoogleMaps extends Component {
           });
           console.log(
             "Address::::",
-            `${club.address.address_line1}  ${club.address.city}`, club
+            `${club.address.address_line1}  ${club.address.city}`,
+            club
           );
 
           googleMapsClient
@@ -159,6 +183,31 @@ class GoogleMaps extends Component {
     }
   };
 
+  submitCP = () => {
+    const googleMapsClient = require("@google/maps").createClient({
+      key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
+      Promise: Promise
+    });
+    googleMapsClient
+      .geocode({
+        address: `${this.state.cpAddress}`
+      })
+      .asPromise()
+      .then(response => {
+        console.log("response!!!!!!!!!!!!!", response.json.results);
+        this.setState(
+          {
+            lat: response.json.results[0].geometry.location.lat,
+            lng: response.json.results[0].geometry.location.lng
+          },
+          () => {
+            console.log("State::::", this.state.lat);
+          }
+        );
+      });
+   
+  };
+
   submit = () => {
     console.log();
 
@@ -187,24 +236,28 @@ class GoogleMaps extends Component {
       });
   };
 
-  
-
   render() {
-   
     return (
-      <div 
-        // style={{ display: "flex", flexDirection: "flexEnd", flexWrap: "wrap" }}
+      <div
+      // style={{ display: "flex", flexDirection: "flexEnd", flexWrap: "wrap" }}
       >
-        
-        <br/>
-        <Form
+        <CpForm
+          cpDataChange={this.cpDataChange}
+          value={this.state.cpAddress}
+          submitCP={this.submitCP}
+          formClick={this.formClick}
+          formOptions={this.state.dropDownAddress}
+        />
+        <br />
+        {/* <Form
           submit={this.submit}
           streetAddress={this.state.streetAddress}
           city={this.state.city}
           postalCode={this.state.postalCode}
           dataChange={this.onInputChanges}
-        />
-        <br/><br/>
+        /> */}
+        <br />
+        <br />
         {this.state.lat && this.state.map}
 
         {this.state.lat != null && (
@@ -222,16 +275,16 @@ class GoogleMaps extends Component {
             containerStyle={{
               width: "100%",
               height: "50px",
-              position: "relative",
+              position: "relative"
               // display: "flex",
               // justifyContent: "flexEnd"
             }}
             style={{
               height: "79vh",
               width: "150vh",
-              
+
               marginLeft: "auto",
-              marginRight: "auto",
+              marginRight: "auto"
               // display: "flex",
               // justifyContent: "center"
             }}
@@ -252,15 +305,13 @@ class GoogleMaps extends Component {
               visible={this.state.showingInfoWindow}
             >
               <div>
-                {console.log("sele",this.state.selectedPlace)}
+               
                 <h3>{this.state.selectedPlace.name}</h3>
               </div>
             </InfoWindow>
           </Map>
-        )
-        } 
-<Carousel />
-
+        )}
+        <Carousel />
       </div>
     );
   }

@@ -55,7 +55,6 @@ class App extends React.Component {
           <Switch>
             {/* need home route in addition to "/" route for navBars active links */}
 
-            <Route path="/home" exact component={Signup} />
 
             <Route exact path="/signOut" render={() => <Redirect to="/" />} />
 
@@ -72,9 +71,21 @@ class App extends React.Component {
                 )
               }
             />
+   <Route
+              exact
+              path="/home"
+              render={() =>
 
+                !sessionStorage.JWT ? (
 
-            <Route
+                  <Redirect to="/login" />
+                ) : (
+                  <MainPage />
+                )
+              }
+            />
+
+            {/* <Route
               exact
               path="/home"
               render={() =>
@@ -84,7 +95,7 @@ class App extends React.Component {
                   <MainPage />
                 )
               }
-            />
+            /> */}
 
             <Route path="/aboutus" exact component={AboutUs} />
 

@@ -16,7 +16,7 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <Navbar sticky="top" bg="primary" variant="dark" expand="lg">
+      <Navbar sticky="top" variant="dark" expand="lg" style={{backgroundColor: 'black'}}>
         <LinkContainer style={{ color: "#A9A9A9" }} to="/home">
           <Navbar.Brand>
           
@@ -40,10 +40,10 @@ class NavBar extends React.Component {
           <LinkContainer to="/aboutus">
               <Nav.Link active={false}>About us </Nav.Link>
             </LinkContainer>
-
+{/* 
             <LinkContainer to="/home">
               <Nav.Link active={false}>Home </Nav.Link>
-            </LinkContainer>
+            </LinkContainer> */}
 
             
 
@@ -59,6 +59,13 @@ class NavBar extends React.Component {
               </LinkContainer>
             )}
             {/* If logged in */}
+            {sessionStorage.JWT && (
+           <LinkContainer to="/home">
+             <Nav.Link active={false}>
+              Home
+             </Nav.Link>
+           </LinkContainer>
+         )}
             {sessionStorage.JWT && (
               <LinkContainer to="/signOut">
                 <Nav.Link active={false} onClick={e => this.Logout()}>
