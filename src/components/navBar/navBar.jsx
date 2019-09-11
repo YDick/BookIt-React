@@ -2,6 +2,7 @@ import React from "react";
 import { Nav, Container, Navbar, NavItem, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import Logo from "./books.svg";
+import './navBar.css'
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <Navbar sticky="top" variant="dark" expand="lg" style={{backgroundColor: 'black'}}>
+      <Navbar sticky="top" variant="dark" expand="lg" style={{backgroundColor: '#111b33'}}>
         <LinkContainer style={{ color: "#A9A9A9" }} to="/home">
           <Navbar.Brand>
           
@@ -29,7 +30,7 @@ class NavBar extends React.Component {
           </Navbar.Brand>
         </LinkContainer>
          <LinkContainer style={{ color: "#A9A9A9" }} to="/home">
-        <Navbar.Brand >
+        <Navbar.Brand className="Brand">
           {"Book It"}
           </Navbar.Brand>
           </LinkContainer>
