@@ -19,7 +19,9 @@ class GoogleMaps extends Component {
       city: "",
       postalCode: "",
       cpAddress: "",
-      dropDownAddress: []
+      dropDownAddress: [],
+      show: false
+    
     };
   }
   // regular form
@@ -40,10 +42,7 @@ class GoogleMaps extends Component {
     }
   };
 
-  // route for marker
-  MarkerClick = id => {
-console.log('hey makrer cliclciclic')
-  }
+  
   // canadaPost form
   cpDataChange = data => {
     this.setState({ cpAddress: data });
@@ -53,7 +52,7 @@ console.log('hey makrer cliclciclic')
       )
         .then(e => e.json())
         .then(e => {
-          this.setState({ dropDownAddress: e }, () => {
+          this.setState({ dropDownAddress: e, show: true }, () => {
             console.log("column state", this.state.dropDownAddress);
           });
         });
@@ -205,7 +204,8 @@ console.log('hey makrer cliclciclic')
         this.setState(
           {
             lat: response.json.results[0].geometry.location.lat,
-            lng: response.json.results[0].geometry.location.lng
+            lng: response.json.results[0].geometry.location.lng,
+            show: false
           },
           () => {
             console.log("State::::", this.state.lat);
@@ -254,6 +254,8 @@ console.log('hey makrer cliclciclic')
           submitCP={this.submitCP}
           formClick={this.formClick}
           formOptions={this.state.dropDownAddress}
+          dropDown={this.dropDown}
+          show={this.state.show}
         />
         <br />
         {/* <Form

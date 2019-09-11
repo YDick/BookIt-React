@@ -5,7 +5,8 @@ class canadaPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: null
+      data: null,
+  
     };
   }
 
@@ -33,7 +34,7 @@ render(){
           this.props.cpDataChange(event.target.value);
         }}
       />
-       {this.state.data != null &&
+       {this.props.show ? this.state.data != null && 
         <Form>
            <Form.Group>
            <Form.Control as="select" multiple>
@@ -48,7 +49,7 @@ render(){
              ))}
            </Form.Control>
            </Form.Group>
-           </Form>} 
+           </Form> : null} 
 
        
 
