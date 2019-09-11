@@ -1,5 +1,5 @@
 import React from "react";
-import { Nav, Container, Navbar, NavItem, Button } from "react-bootstrap";
+import { Nav, Navbar} from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import Logo from "./books.svg";
 
@@ -43,6 +43,10 @@ class NavBar extends React.Component {
 
             <LinkContainer to="/home">
               <Nav.Link active={false}>Home </Nav.Link>
+            </LinkContainer>
+
+            <LinkContainer to="/MyClubs">
+              <Nav.Link active={false}>Clubs</Nav.Link>
             </LinkContainer>
 
             

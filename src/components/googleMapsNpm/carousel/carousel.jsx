@@ -1,6 +1,7 @@
 import React, { Component }  from 'react'
 import {Carousel,} from "react-bootstrap";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import './carousel.css';
 class clubCarousel extends Component {
   constructor(props) {
     super(props);
@@ -46,8 +47,7 @@ class clubCarousel extends Component {
   {/* {this.props.lat != null && 
    <React.Fragment>
      </React.Fragment>} */}
-  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-   <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> 
+  <br/><br/><br/>
    
 
   <Carousel>
