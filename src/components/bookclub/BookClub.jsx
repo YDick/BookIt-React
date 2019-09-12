@@ -107,7 +107,7 @@ class BookClub extends React.Component {
             </Card.Footer>
           </Card>
 
-          <Map
+          <Map 
             onClick={this.onMapClick}
             google={this.props.google}
             initialCenter={{
@@ -121,7 +121,7 @@ class BookClub extends React.Component {
             containerStyle={{
               width: "100%",
               height: "50px",
-              position: "relative"
+              position: "relative",
               // display: "flex",
               // justifyContent: "flexEnd"
             }}
@@ -130,7 +130,8 @@ class BookClub extends React.Component {
               width: "150vh",
 
               marginLeft: "auto",
-              marginRight: "auto"
+              marginRight: "auto",
+              marginTop: '3%'
               // display: "flex",
               // justifyContent: "center"
             }}
@@ -143,6 +144,7 @@ class BookClub extends React.Component {
               name={"hi"}
             />
           </Map>
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         </React.Fragment>
       );
     } else {
