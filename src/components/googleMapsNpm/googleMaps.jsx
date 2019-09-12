@@ -259,7 +259,8 @@ class GoogleMaps extends Component {
           </Map>
         )
         } 
-<Carousel />
+      <Carousel />
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
       </div>
     );
