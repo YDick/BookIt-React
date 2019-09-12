@@ -91,7 +91,7 @@ class App extends React.Component {
             <Route
               path="/login"
               exact
-              render={props => <Login {...props} logIn={this.logIn} />}
+              render={props => <Login {...props} logIn={this.logIn} style={{ minHeight: '100%' }}/>}
             />
             <Route path="/signup" exact component={Signup} />
 
