@@ -62,16 +62,24 @@ class clubCarousel extends Component {
                     style={{ width: "800px", height: "300px", margin: "auto" }}
                     className="d-block w-100"
                     src={""+ club.image_url}
-                    alt="First club"
+                    alt="Book Club"
                   />
                   <Carousel.Caption                       style={{ bottom: "25%", right: '25%'}}>
                     <Link
+<<<<<<< HEAD
                       style={{ color: "blue"}}
+=======
+                      style={{ color: "#1f2b7a" }}
+>>>>>>> 1c044e881ac49990d1cd1f7fd3def0a59b380d8d
                       to={"/bookclub/" + club.id}
                     >
                       <h3>{club.name}</h3>
                     </Link>
+<<<<<<< HEAD
                     <h5 style={{ color: "blue" }}>
+=======
+                    <h5 style={{ color: "#1f2b7a" }}>
+>>>>>>> 1c044e881ac49990d1cd1f7fd3def0a59b380d8d
                       {" "}
                       {club.address.address_line1}, {club.address.city}{" "}
                     </h5>
