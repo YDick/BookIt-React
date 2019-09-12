@@ -21,8 +21,6 @@ import AboutUs from "./components/aboutUs/aboutUs";
 
 import EmailFriends from "./components/email/EmailFriends";
 
-
-
 import MyAccountHOC from "./components/my-account/myAccountHOC";
 import MyBookclubs from "./components/myBookclubs/MyBookclubs";
 
@@ -56,31 +54,20 @@ class App extends React.Component {
           <Switch>
             {/* need home route in addition to "/" route for navBars active links */}
 
-
             <Route exact path="/signout" render={() => <Redirect to="/" />} />
 
             <Route
               exact
               path="/"
               render={() =>
-                !sessionStorage.JWT ? (
-                  <Redirect to="/login" />
-                ) : (
-                  <MainPage />
-                )
+                !sessionStorage.JWT ? <Redirect to="/login" /> : <MainPage />
               }
             />
-   <Route
+            <Route
               exact
               path="/home"
               render={() =>
-
-                !sessionStorage.JWT ? (
-
-                  <Redirect to="/login" />
-                ) : (
-                  <MainPage />
-                )
+                !sessionStorage.JWT ? <Redirect to="/login" /> : <MainPage />
               }
             />
 
@@ -98,11 +85,16 @@ class App extends React.Component {
 
             <Route path="/aboutus" exact component={AboutUs} />
 
-
             <Route
               path="/login"
               exact
-              render={props => <Login {...props} logIn={this.logIn} style={{ minHeight: '100%' }}/>}
+              render={props => (
+                <Login
+                  {...props}
+                  logIn={this.logIn}
+                  style={{ minHeight: "100%" }}
+                />
+              )}
             />
             <Route path="/signup" exact component={Signup} />
 
