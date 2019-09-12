@@ -47,29 +47,9 @@ class clubCarousel extends Component {
  
    
 
-  <Carousel>
-{this.state.clubs.map((club,i) =>(
-  i < 10 &&
-  <Carousel.Item>
-    <img
-     style={{width: '800px', height: '300px', margin: 'auto'}}
-     className="d-block w-100"
-      src="https://previews.123rf.com/images/lanastocker/lanastocker1706/lanastocker170600593/80479391-stack-of-colorful-books-education-background-back-to-school-book-hardback-colorful-books-on-wooden-t.jpg"
-      alt="First club"
-    />
-    <Carousel.Caption>
-      <Link to="/login"><h3>{club.name}</h3></Link>
-      <h5 style={{color: "black"}}> {club.address.address_line1}, {club.address.city} </h5>
-    </Carousel.Caption>
-  </Carousel.Item>
-  
-  )
-  )}
-  </Carousel>
 
-</div>
 
-    )}
+
 
 
 
