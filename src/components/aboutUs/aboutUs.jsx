@@ -10,6 +10,7 @@ function AboutUs(props) {
     <React.Fragment style={{ display: "flex", displayContent: 'center', alignItems: 'center'  }}>
       <Container>
       <React.Fragment >
+        <h3>Meet the Team!</h3>
       <br/><br/>
           <Row>
             <Col>

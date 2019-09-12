@@ -24,6 +24,7 @@ import EmailFriends from "./components/email/EmailFriends";
 
 
 import MyAccountHOC from "./components/my-account/myAccountHOC";
+import MyBookclubs from "./components/myBookclubs/MyBookclubs";
 
 class App extends React.Component {
   constructor(props) {
@@ -56,15 +57,13 @@ class App extends React.Component {
             {/* need home route in addition to "/" route for navBars active links */}
 
 
-            <Route exact path="/signOut" render={() => <Redirect to="/" />} />
+            <Route exact path="/signout" render={() => <Redirect to="/" />} />
 
             <Route
               exact
               path="/"
               render={() =>
-
                 !sessionStorage.JWT ? (
-
                   <Redirect to="/login" />
                 ) : (
                   <MainPage />
@@ -103,12 +102,12 @@ class App extends React.Component {
             <Route
               path="/login"
               exact
-              render={props => <Login {...props} logIn={this.logIn} />}
+              render={props => <Login {...props} logIn={this.logIn} style={{ minHeight: '100%' }}/>}
             />
             <Route path="/signup" exact component={Signup} />
 
             <Route path="/email" exact component={EmailFriends} />
-
+            <Route path="/MyClubs" exact component={MyBookclubs} />
             <Route path="/MyAccount" exact component={MyAccountHOC} />
           </Switch>
         </Router>
