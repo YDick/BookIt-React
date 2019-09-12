@@ -49,6 +49,13 @@ class NavBar extends React.Component {
               <Nav.Link active={false}>Clubs</Nav.Link>
             </LinkContainer>
 
+            <LinkContainer to="/Email">
+              <Nav.Link active={false}>Invite!</Nav.Link>
+            </LinkContainer>
+
+            
+
+
             
 
             {/* if logged out: */}

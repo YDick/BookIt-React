@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { Component } from "react";
 import {Card, CardGroup, Button} from "react-bootstrap";
 import {LinkContainer} from "react-router-bootstrap";
