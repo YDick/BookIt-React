@@ -187,7 +187,7 @@ export default class UserInfo extends Component {
               </Button>
 
         </Form>
-
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       </div>
   
         )

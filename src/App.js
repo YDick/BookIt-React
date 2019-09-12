@@ -15,6 +15,9 @@ import {
 // import AccountStuff from './components/accountStuffHOC/AccountStuff';
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
+import BookClubs from "./components/bookclub/BookClub";
+import BookClubForm from "./components/bookclubform/BookClubForm";
+
 // import CanadaPost from './components/googleMapsNpm/canadaPostSearch/canadaPost'
 // import Person from './components/aboutUs/people/person'
 import AboutUs from "./components/aboutUs/aboutUs";
@@ -101,6 +104,8 @@ class App extends React.Component {
             <Route path="/email" exact component={EmailFriends} />
             <Route path="/MyClubs" exact component={MyBookclubs} />
             <Route path="/MyAccount" exact component={MyAccountHOC} />
+            <Route path="/bookclub/:id" exact component={BookClubs} />
+          <Route path="/create/bookclub" exact component={BookClubForm} />
           </Switch>
         </Router>
       </div>
