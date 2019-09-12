@@ -12,6 +12,7 @@ export default class MyBookclubs extends Component {
         };
       }
 
+      
       componentDidMount(){
         console.log("componentDidMount componentDidMount componentDidMount")
         // fetch myclubs
@@ -41,15 +42,25 @@ export default class MyBookclubs extends Component {
         })
           .then(e => e.json())
           .then(data => {
-              console.log("all clubs data::" + data.book_clubs)
+                var clubs = data.book_clubs.filter((club) => {
+                let a = true
+                this.state.myclubs.forEach((item) => {
+                  console.log("club.id and item.id"+club.id+item.id)
+                  if(club.id == item.id){
+                    a = false
+                  }
+                } 
+              )
+              return(a)
+            }
+      )
+      console.log("filtereddd:::"+ JSON.stringify(clubs))
               this.setState({
-                  clubs: data.book_clubs
+                  clubs: clubs
               })
           })
           .catch(error => console.error("Error:", error));
-
         }
-
 
           render()  {
               return(
@@ -58,7 +69,7 @@ export default class MyBookclubs extends Component {
                     <hr/>
 
                     {this.state.myclubs.map((club,i) =>(
-                        <Card style={{ width: '18rem' }}>
+                        <Card style={{ width: '18rem' }} key={i}>
                         <Card.Img variant="top" src={club.image_url} />
                         <Card.Body>
                           <Card.Title>{club.name}</Card.Title>
@@ -81,7 +92,7 @@ export default class MyBookclubs extends Component {
                     <hr/>
                     <CardGroup>
                     {this.state.clubs.map((club,i) =>(
-                        <Card style={{ width: '18rem' }}>
+                        <Card style={{ width: '18rem' }} key={i+30}>
                         <Card.Img variant="top" src={club.image_url} />
                         <Card.Body>
                           <Card.Title>{club.name}</Card.Title>
