@@ -60,6 +60,7 @@ export default class Login extends Component {
   render() {
     return (
       <div className="Login">
+        <h3>Login</h3>
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="email">
             <FormLabel>Email</FormLabel>
@@ -90,7 +91,9 @@ export default class Login extends Component {
         </form>
 
         <Link className="link" to="/signup">Don't have an account? <span className="link-signup">Sign up</span></Link>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       </div>
+
     );
   }
 }

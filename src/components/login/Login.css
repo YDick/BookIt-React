@@ -1,7 +1,12 @@
 @media all and (min-width: 480px) {
+  html {
+    height: 110%;
+  }
     .Login {
       padding: 60px 0;
+      padding-bottom: 100px
     }
+
 
     .Signup {
       margin: 8px 30%;
@@ -19,5 +24,6 @@
     label {
       font-weight: bold;
     }
+
   }
   

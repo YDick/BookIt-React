@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, FormGroup, FormControl, FormLabel, Col, Row, Form, Image } from "react-bootstrap";
+import { Button, FormGroup, FormLabel, Col, Row, Form, Image } from "react-bootstrap";
 import "./UserInfo.css"
 
 export default class UserInfo extends Component {
@@ -187,7 +187,7 @@ export default class UserInfo extends Component {
               </Button>
 
         </Form>
-
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       </div>
   
         )
