@@ -66,12 +66,12 @@ class clubCarousel extends Component {
                   />
                   <Carousel.Caption>
                     <Link
-                      style={{ color: "#20477d" }}
+                      style={{ color: "#1f2b7a" }}
                       to={"/bookclub/" + club.id}
                     >
                       <h3>{club.name}</h3>
                     </Link>
-                    <h5 style={{ color: "#20477d" }}>
+                    <h5 style={{ color: "#1f2b7a" }}>
                       {" "}
                       {club.address.address_line1}, {club.address.city}{" "}
                     </h5>
