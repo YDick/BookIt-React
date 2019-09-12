@@ -1,5 +1,20 @@
 .App {
   text-align: center;
+  background: url("/congruent_pentagon.png");
+background-position: center;
+background-attachment: fixed;
+background-size: cover;
+min-height: 100%;
+width: 100%;
+
+margin: 0;
+
+/* background-color: transparent; */
+}
+
+body, html {
+height: 100%;
+margin: 0;
 }
 
 
@@ -8,6 +23,8 @@
   height:300px;
   margin: auto;
 }
+
+
 
 @keyframes App-logo-spin {
   from {
@@ -19,3 +36,4 @@
 
   
 }
+

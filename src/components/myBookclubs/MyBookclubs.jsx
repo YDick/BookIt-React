@@ -66,7 +66,6 @@ export default class MyBookclubs extends Component {
 
 
           render()  {
-            console.log("my clubs:::: "+ this.state.myclubs+" clubs:::: "+this.state.clubs)
               return(
                 <div>
                     <h2>My Book Clubs:</h2>
