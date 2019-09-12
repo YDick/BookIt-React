@@ -17,7 +17,7 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <Navbar sticky="top" variant="dark" expand="lg" style={{backgroundColor: '#111b33'}}>
+      <Navbar className="Nav" sticky="top" variant="dark" expand="lg" style={{backgroundColor: '#111b33'}}>
         <LinkContainer style={{ color: "#A9A9A9" }} to="/home">
           <Navbar.Brand>
           
