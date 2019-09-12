@@ -52,6 +52,7 @@ export default class Login extends Component {
       })
     .catch(error=>{
       console.error('Error:', error);
+      alert("Email or password not recognized")
     });
   }
 
