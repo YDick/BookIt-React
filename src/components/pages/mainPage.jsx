@@ -21,6 +21,7 @@ function mainPage(props) {
 
         </div>
       </Container>
+      
     </React.Fragment>
   );
 }
