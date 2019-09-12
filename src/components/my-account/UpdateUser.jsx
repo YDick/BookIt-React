@@ -106,7 +106,9 @@ export default class UpdateUser extends Component {
 
     validateForm() {
         return (
-          this.state.name.length > 0
+          this.state.name.length > 0 &&
+          // this.state.password.length > 6 &&
+          this.state.password === this.state.confirmPassword
         );
       }
      
@@ -206,9 +208,18 @@ export default class UpdateUser extends Component {
 
 
           <FormGroup controlId="password">
-            <FormLabel>Password</FormLabel>
+            <FormLabel>Change Password</FormLabel>
             <FormControl
               value={this.state.password}
+              onChange={this.handleChange}
+              type="password"
+            />
+          </FormGroup>
+
+          <FormGroup controlId="confirmPassword">
+            <FormLabel>Confirm Password</FormLabel>
+            <FormControl
+              value={this.state.confirmPassword}
               onChange={this.handleChange}
               type="password"
             />
@@ -231,7 +242,7 @@ export default class UpdateUser extends Component {
                     block
                     className = "button is-link"
                     type="submit"
-                    disabled= {false}
+                    disabled= {!this.validateForm()}
                     onClick={e=>this.handleSubmit(e)}
                     >
                     Save Changes
@@ -243,6 +254,7 @@ export default class UpdateUser extends Component {
           
 
         </Form>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
       </div>
     );

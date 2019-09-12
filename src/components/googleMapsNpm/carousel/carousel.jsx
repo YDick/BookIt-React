@@ -64,14 +64,19 @@ class clubCarousel extends Component {
                     src={""+ club.image_url}
                     alt="Book Club"
                   />
-                  <Carousel.Caption>
+                  <Carousel.Caption                       style={{ bottom: "25%", right: '25%'}}>
                     <Link
-                      style={{ color: "#1f2b7a" }}
+
+                      style={{ color: "blue"}}
+
                       to={"/bookclub/" + club.id}
                     >
                       <h3>{club.name}</h3>
                     </Link>
-                    <h5 style={{ color: "#1f2b7a" }}>
+
+           
+                    <h5 style={{ color: "blue" }}>
+
                       {" "}
                       {club.address.address_line1}, {club.address.city}{" "}
                     </h5>

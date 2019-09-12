@@ -52,6 +52,7 @@ export default class Login extends Component {
       })
     .catch(error=>{
       console.error('Error:', error);
+      alert("Email or password not recognized")
     });
   }
 
@@ -91,7 +92,7 @@ export default class Login extends Component {
         </form>
 
         <Link className="link" to="/signup">Don't have an account? <span className="link-signup">Sign up</span></Link>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       </div>
 
     );
