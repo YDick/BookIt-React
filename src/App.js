@@ -23,10 +23,7 @@ import BookClubForm from "./components/bookclubform/BookClubForm";
 import AboutUs from "./components/aboutUs/aboutUs";
 
 import EmailFriends from "./components/email/EmailFriends";
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 import MyAccountHOC from "./components/my-account/myAccountHOC";
 import MyBookclubs from "./components/myBookclubs/MyBookclubs";
 
