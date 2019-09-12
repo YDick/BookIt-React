@@ -28,7 +28,7 @@ render(){
       <Form.Control
         size="lg"
         type="text"
-        placeholder="Large text"
+        placeholder="Enter an Address"
         value={this.props.value}
         onChange={event => {
           this.props.cpDataChange(event.target.value);
