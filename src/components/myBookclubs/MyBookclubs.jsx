@@ -82,7 +82,7 @@ export default class MyBookclubs extends Component {
                             <Card.Text>
                               {club.description}
                             </Card.Text>
-                            <LinkContainer to={"/bookclubs/"+club.id}>
+                            <LinkContainer to={"/bookclub/"+club.id}>
                               <Button  class="button" variant="primary">Go To Club Page</Button>
                             </LinkContainer>
   
@@ -112,7 +112,7 @@ export default class MyBookclubs extends Component {
                           <Card.Text>
                             {club.description}
                           </Card.Text>
-                          <LinkContainer to={"/bookclubs/"+club.id}>
+                          <LinkContainer to={"/bookclub/"+club.id}>
                           <Button variant="primary">Go To Club Page</Button>
                           </LinkContainer>
                         </Card.Body>
