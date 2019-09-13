@@ -17,6 +17,10 @@
       max-width: 320px;
     }
 
+    .BookClubForm {
+      margin: 0 auto;
+      max-width: 1200px;
+    }
     label {
       font-weight: bold;
     }

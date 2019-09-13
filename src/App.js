@@ -15,13 +15,14 @@ import {
 // import AccountStuff from './components/accountStuffHOC/AccountStuff';
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
+import BookClubs from "./components/bookclub/BookClub";
+import BookClubForm from "./components/bookclubform/BookClubForm";
+
 // import CanadaPost from './components/googleMapsNpm/canadaPostSearch/canadaPost'
 // import Person from './components/aboutUs/people/person'
 import AboutUs from "./components/aboutUs/aboutUs";
 
 import EmailFriends from "./components/email/EmailFriends";
-
-
 
 import MyAccountHOC from "./components/my-account/myAccountHOC";
 import MyBookclubs from "./components/myBookclubs/MyBookclubs";
@@ -56,31 +57,20 @@ class App extends React.Component {
           <Switch>
             {/* need home route in addition to "/" route for navBars active links */}
 
-
             <Route exact path="/signout" render={() => <Redirect to="/" />} />
 
             <Route
               exact
               path="/"
               render={() =>
-                !sessionStorage.JWT ? (
-                  <Redirect to="/login" />
-                ) : (
-                  <MainPage />
-                )
+                !sessionStorage.JWT ? <Redirect to="/login" /> : <MainPage />
               }
             />
-   <Route
+            <Route
               exact
               path="/home"
               render={() =>
-
-                !sessionStorage.JWT ? (
-
-                  <Redirect to="/login" />
-                ) : (
-                  <MainPage />
-                )
+                !sessionStorage.JWT ? <Redirect to="/login" /> : <MainPage />
               }
             />
 
@@ -98,17 +88,24 @@ class App extends React.Component {
 
             <Route path="/aboutus" exact component={AboutUs} />
 
-
             <Route
               path="/login"
               exact
-              render={props => <Login {...props} logIn={this.logIn} style={{ minHeight: '100%' }}/>}
+              render={props => (
+                <Login
+                  {...props}
+                  logIn={this.logIn}
+                  style={{ minHeight: "100%" }}
+                />
+              )}
             />
             <Route path="/signup" exact component={Signup} />
 
             <Route path="/email" exact component={EmailFriends} />
             <Route path="/MyClubs" exact component={MyBookclubs} />
             <Route path="/MyAccount" exact component={MyAccountHOC} />
+            <Route path="/bookclub/:id" exact component={BookClubs} />
+          <Route path="/create/bookclub" exact component={BookClubForm} />
           </Switch>
         </Router>
       </div>
