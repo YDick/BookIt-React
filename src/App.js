@@ -1,7 +1,5 @@
 import React from "react";
 import "./App.css";
-
-import AccountStuff from "./components/accountStuffHOC/AccountStuff";
 import NavBar from "./components/navBar/navBar";
 
 import MainPage from "./components/googleMapsNpm/googleMaps";
@@ -99,7 +97,13 @@ class App extends React.Component {
                 />
               )}
             />
-            <Route path="/signup" exact component={Signup} />
+            <Route path="/signup" exact render={props => (
+              <Signup
+              {...props}
+              logIn={this.logIn}
+              style={{ minHeight: "100%" }}
+            />
+            )} />
 
             <Route path="/email" exact component={EmailFriends} />
             <Route path="/MyClubs" exact component={MyBookclubs} />
