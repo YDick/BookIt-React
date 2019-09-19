@@ -30,6 +30,7 @@ class NavBar extends React.Component {
               width="45"
               height="45"
               src={Logo}
+              alt="logo"
               className="d-inline-block align-top"
             />
           </Navbar.Brand>
