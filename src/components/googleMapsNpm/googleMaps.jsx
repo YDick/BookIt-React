@@ -268,7 +268,7 @@ class GoogleMaps extends Component {
         <br />
         <br />
         {this.state.lat && this.state.map}
-
+        {this.state.lat === null && <h1>Loading...</h1>}
         {this.state.lat != null && (
           <Map
             onClick={this.onMapClick}
