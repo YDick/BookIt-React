@@ -11,8 +11,7 @@ export default function Footer()  {
                         <div class="col-sm-12 col-md-6">
                         <h6>Contact</h6>
                         <ul class="footer-links">
-                            <li>CampAshreinu123@gmail.com</li>
-                            <li>416.787.1489</li>
+                            <li>TheBookItApp@gmail.com</li>
                         </ul>
                         </div>
             
@@ -24,10 +23,7 @@ export default function Footer()  {
                         <h6>Quick Links</h6>
                         <ul class="footer-links">
                             <li><a href="/aboutus/">About Us</a></li>
-                            <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
-                            <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
-                            <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
-                            <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+                            <li><a href="/home/">Home</a></li>
                         </ul>
                         </div>
                     </div>
@@ -36,15 +32,15 @@ export default function Footer()  {
                     <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-sm-6 col-xs-12">
-                        <p class="copyright-text">Designed by Yehudis Dick
+                        <p class="copyright-text">Designed by Yehudis Dick, Yudi Rose and Larisa Granat
                         </p>
                         </div>
             
                         <div class="col-md-4 col-sm-6 col-xs-12">
-                        <ul class="social-icons">
+                        {/* <ul class="social-icons">
                             <li><a class="dribbble" href="https://www.instagram.com/ashreinutoronto/?hl=en" target="_blank"><i class="fa fa-instagram"></i></a></li>
                             <li><a class="linkedin" href="https://www.instagram.com/ashreinutoronto/?hl=en"><i class="fa fa-linkedin"></i></a></li>   
-                        </ul>
+                        </ul> */}
                         </div>
                     </div>
                     </div>
