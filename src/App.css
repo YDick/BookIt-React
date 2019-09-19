@@ -1,11 +1,11 @@
 .App {
   text-align: center;
   background: url("/congruent_pentagon.png");
-background-position: center;
-background-attachment: fixed;
-background-size: cover;
-min-height: 100%;
-width: 100%;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100%;
+  width: 100%;
 
 margin: 0;
 

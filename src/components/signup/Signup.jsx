@@ -66,7 +66,7 @@ export default class Signup extends Component {
           )
         )
 
-        fetch("http://book-it.herokuapp.com/api/v1/users",{
+        fetch("https://book-it.herokuapp.com/api/v1/users",{
             method: 'POST',
             body:
             JSON.stringify(
@@ -95,7 +95,7 @@ export default class Signup extends Component {
                 alert('Email already in use')
               }else{
                 console.log('loggin in')
-                fetch("http://book-it.herokuapp.com/api/v1/user_token",{
+                fetch("https://book-it.herokuapp.com/api/v1/user_token",{
                     method: 'POST',
                     body:
                     JSON.stringify(
