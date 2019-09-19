@@ -24,6 +24,7 @@ import EmailFriends from "./components/email/EmailFriends";
 
 import MyAccountHOC from "./components/my-account/myAccountHOC";
 import MyBookclubs from "./components/myBookclubs/MyBookclubs";
+import Footer from "./components/footer/footer"
 
 class App extends React.Component {
   constructor(props) {
@@ -111,6 +112,7 @@ class App extends React.Component {
             <Route path="/bookclub/:id" exact component={BookClubs} />
           <Route path="/create/bookclub" exact component={BookClubForm} />
           </Switch>
+          < Footer />
         </Router>
       </div>
     );

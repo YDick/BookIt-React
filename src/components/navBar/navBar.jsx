@@ -22,7 +22,7 @@ class NavBar extends React.Component {
         sticky="top"
         variant="dark"
         expand="lg"
-        style={{ backgroundColor: "#111b33" }}
+        style={{ backgroundColor: "#26272b" }}
       >
         <LinkContainer style={{ color: "#A9A9A9" }} to="/home">
           <Navbar.Brand>

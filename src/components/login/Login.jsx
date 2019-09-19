@@ -27,7 +27,7 @@ export default class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    fetch("http://book-it.herokuapp.com/api/v1/user_token",{
+    fetch("https://book-it.herokuapp.com/api/v1/user_token",{
       method: 'POST',
       body:
       JSON.stringify(
@@ -89,7 +89,8 @@ export default class Login extends Component {
         </form>
 
         <Link className="link" to="/signup">Don't have an account? <span className="link-signup">Sign up</span></Link>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        
+        
       </div>
 
     );
