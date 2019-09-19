@@ -32,7 +32,7 @@ export default function Footer()  {
                     <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-sm-6 col-xs-12">
-                        <p class="copyright-text">Designed by Yehudis Dick, Yudi Rose and Larisa Granat
+                        <p class="copyright-text">Designed by Yehudis Dick, Yudi Rosenzweig and Larisa Granat
                         </p>
                         </div>
             
