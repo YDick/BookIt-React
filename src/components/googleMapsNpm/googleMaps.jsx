@@ -48,7 +48,7 @@ class GoogleMaps extends Component {
     this.setState({ cpAddress: data });
     if (data.length > 4) {
       fetch(
-        `https://ws1.postescanada-canadapost.ca/AddressComplete/Interactive/Find/v2.10/json3.ws?key=TT23-AX96-JM63-MZ18&SearchTerm=${this.state.cpAddress}`
+        `https://ws1.postescanada-canadapost.ca/AddressComplete/Interactive/Find/v2.10/json3.ws?key=JP81-DZ99-JU99-ZN53&SearchTerm=${this.state.cpAddress}`
       )
         .then(e => e.json())
         .then(e => {
