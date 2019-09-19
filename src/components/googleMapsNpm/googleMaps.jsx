@@ -3,7 +3,8 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import Form from "../mapForm/form";
 import Carousel from "./carousel/carousel";
 import CpForm from "../mapForm/canadaPost";
-import { Link, BrowserRouter } from 'react-router-dom'
+import { Link, BrowserRouter } from 'react-router-dom';
+import "./home.css"
 
 class GoogleMaps extends Component {
   constructor(props) {
@@ -271,6 +272,7 @@ class GoogleMaps extends Component {
 
         {this.state.lat != null && (
           <Map
+            class="map"
             onClick={this.onMapClick}
             google={this.props.google}
             initialCenter={{
@@ -325,13 +327,11 @@ class GoogleMaps extends Component {
           </Map>
         )}
         <Carousel />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       </div>
     );
   }
 }
+
 export default GoogleApiWrapper({
   apiKey: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU"
 })(GoogleMaps);

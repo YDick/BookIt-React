@@ -112,7 +112,7 @@ class App extends React.Component {
             <Route path="/bookclub/:id" exact component={BookClubs} />
           <Route path="/create/bookclub" exact component={BookClubForm} />
           </Switch>
-          < Footer />
+          {/* < Footer /> */}
         </Router>
       </div>
     );
