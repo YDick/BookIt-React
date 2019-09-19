@@ -31,13 +31,10 @@ export default class Login extends Component {
       method: 'POST',
       body:
       JSON.stringify(
-      {"auth": this.state}
-      // {
-      //   "auth":{
-      //     "email": "seed@yahoo.com",
-      //     "password": "password123"
-      //   }
-      // }
+      {"auth": {
+        email: this.state.email.toLowerCase(),
+        password: this.state.password
+      }}
       ),
       headers:{
         'Content-Type': 'application/json'
