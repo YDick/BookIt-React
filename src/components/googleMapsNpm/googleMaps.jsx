@@ -246,6 +246,7 @@ class GoogleMaps extends Component {
     console.log(this.state.selectedPlace, "selected place!!");
     return (
       <div
+        className="home"
       // style={{ display: "flex", flexDirection: "flexEnd", flexWrap: "wrap" }}
       >
         <CpForm
@@ -325,9 +326,7 @@ class GoogleMaps extends Component {
           </Map>
         )}
         <Carousel />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        
       </div>
     );
   }
