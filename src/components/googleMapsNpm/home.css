@@ -1,3 +1,7 @@
 .map {
     padding: 100px;
 }
+
+.App {
+    min-height: 1400px;
+}

@@ -4,21 +4,21 @@
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
-  min-height: 105%;
+  /* important so if no or little content, footer gets pushed down (bc its on index page) */
+  min-height: 110%;
   width: 100%;
+  margin: 0;
 
-margin: 0;
-
-  /* so child divs arent bigger */
-  overflow: auto;
-
-/* background-color: transparent; */
+  /* display: grid; */
+  /* grid-template-rows: auto auto auto; */
 }
 
-body, html {
-height: 100%;
-margin: 0;
-}
+/* .site-footer  {
+  grid-row-start: 3;
+  grid-row-end: -1;
+} */
+
+
 
 .carousel {
   width:800px;
