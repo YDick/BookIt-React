@@ -5,7 +5,7 @@
   background-attachment: fixed;
   background-size: cover;
   /* important so if no or little content, footer gets pushed down (bc its on index page) */
-  min-height: 110%;
+  min-height: 90%;
   width: 100%;
   margin: 0;
 

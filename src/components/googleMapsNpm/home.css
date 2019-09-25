@@ -3,5 +3,8 @@
 }
 
 .App {
+    /* position: absolute; */
+    
+    /* estimated height of the map page */
     min-height: 1400px;
 }
