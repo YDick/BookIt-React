@@ -27,17 +27,14 @@ export default class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    fetch("http://book-it.herokuapp.com/api/v1/user_token",{
+    fetch("https://book-it.herokuapp.com/api/v1/user_token",{
       method: 'POST',
       body:
       JSON.stringify(
-      {"auth": this.state}
-      // {
-      //   "auth":{
-      //     "email": "seed@yahoo.com",
-      //     "password": "password123"
-      //   }
-      // }
+      {"auth": {
+        email: this.state.email.toLowerCase(),
+        password: this.state.password
+      }}
       ),
       headers:{
         'Content-Type': 'application/json'
@@ -92,7 +89,8 @@ export default class Login extends Component {
         </form>
 
         <Link className="link" to="/signup">Don't have an account? <span className="link-signup">Sign up</span></Link>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        
+        
       </div>
 
     );

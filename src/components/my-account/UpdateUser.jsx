@@ -27,7 +27,7 @@ export default class UpdateUser extends Component {
         console.log('componectDidMount')
 
         // fetch the *current user* for My Account
-        fetch('http://book-it.herokuapp.com/api/v1/current', {
+        fetch('https://book-it.herokuapp.com/api/v1/current', {
             headers:{
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer '+ sessionStorage.JWT
