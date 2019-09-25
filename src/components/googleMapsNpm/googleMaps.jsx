@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
-import Form from "../mapForm/form";
 import Carousel from "./carousel/carousel";
 import CpForm from "../mapForm/canadaPost";
 import { Link, BrowserRouter } from 'react-router-dom';
@@ -297,8 +296,6 @@ class GoogleMaps extends Component {
               marginLeft: "auto",
               marginRight: "auto",
 
-              // to prevent overlap on caroucel. sure hope i dont break anything yudi --yd
-              // position: "relative"
               // display: "flex",
               // justifyContent: "center"
             }}
