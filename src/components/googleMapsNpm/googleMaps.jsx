@@ -20,8 +20,8 @@ class GoogleMaps extends Component {
       postalCode: "",
       cpAddress: "",
       dropDownAddress: [],
-      show: false
-    
+      show: false,
+      currentLocation: null
     };
   }
   // regular form
@@ -42,7 +42,6 @@ class GoogleMaps extends Component {
     }
   };
 
-  
   // canadaPost form
   cpDataChange = data => {
     this.setState({ cpAddress: data });
@@ -109,7 +108,11 @@ class GoogleMaps extends Component {
               this.setState(
                 {
                   lat: response.json.results[0].geometry.location.lat,
-                  lng: response.json.results[0].geometry.location.lng
+                  lng: response.json.results[0].geometry.location.lng,
+                  currentLocation: {
+                    lat: response.json.results[0].geometry.location.lat,
+                    lng: response.json.results[0].geometry.location.lng
+                  }
                 },
                 () => {
                   console.log("State::::", this.state.lat);
@@ -205,7 +208,9 @@ class GoogleMaps extends Component {
           {
             lat: response.json.results[0].geometry.location.lat,
             lng: response.json.results[0].geometry.location.lng,
-            show: false
+            show: false,
+            currentLocation: {lat: response.json.results[0].geometry.location.lat,
+              lng: response.json.results[0].geometry.location.lng} 
           },
           () => {
             console.log("State::::", this.state.lat);
@@ -243,6 +248,7 @@ class GoogleMaps extends Component {
   };
 
   render() {
+   
     console.log(this.state.selectedPlace, "selected place!!");
     return (
       <div
@@ -300,7 +306,9 @@ class GoogleMaps extends Component {
               // justifyContent: "center"
             }}
             zoom={15}
+            
           >
+            
             {this.state.markers.map((e, i) => (
               <Marker
                 id={e.bookClub.id}
@@ -312,16 +320,33 @@ class GoogleMaps extends Component {
               />
             ))}
 
+            <Marker
+              style={{ color: "blue", backgroundColor: 'black' }}
+              onClick={this.onMarkerClick}
+              icon={"http://maps.google.com/mapfiles/ms/icons/blue.png"}
+              position={{
+                lat: this.state.currentLocation.lat,
+                lng: this.state.currentLocation.lng
+              }}
+              title="Your Location"
+              name="Your Location"
+            />
+
             <InfoWindow
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}
             >
               <div>
-                <BrowserRouter>
-               <Link to={"/bookclub/" + this.state.selectedPlace.id}> <h3>
-                {this.state.selectedPlace.name}
-                </h3> </Link>
-                </BrowserRouter>
+                {this.state.selectedPlace.name !== "Your Location" ? (
+                  <BrowserRouter>
+                    <Link to={"/bookclub/" + this.state.selectedPlace.id}>
+                      {" "}
+                      <h3>{this.state.selectedPlace.name}</h3>{" "}
+                    </Link>
+                  </BrowserRouter>
+                ) : (
+                  <h3> {this.state.selectedPlace.name} </h3>
+                )}
               </div>
             </InfoWindow>
           </Map>
