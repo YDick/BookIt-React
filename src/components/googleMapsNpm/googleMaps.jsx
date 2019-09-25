@@ -272,7 +272,7 @@ class GoogleMaps extends Component {
         {this.state.lat === null && <h1>Loading...</h1>}
         {this.state.lat != null && (
           <Map
-            class="map"
+            className="map"
             onClick={this.onMapClick}
             google={this.props.google}
             initialCenter={{
@@ -283,19 +283,22 @@ class GoogleMaps extends Component {
               lng: this.state.lng,
               lat: this.state.lat
             }}
-            containerStyle={{
-              width: "100%",
-              height: "50px",
-              position: "relative"
-              // display: "flex",
-              // justifyContent: "flexEnd"
-            }}
+            // containerStyle={{
+            //   width: "100%",
+            //   // height: "50px",
+            //   position: "relative"
+            //   // display: "flex",
+            //   // justifyContent: "flexEnd"
+            // }}
             style={{
               height: "79vh",
               width: "150vh",
 
               marginLeft: "auto",
-              marginRight: "auto"
+              marginRight: "auto",
+
+              // to prevent overlap on caroucel. sure hope i dont break anything yudi --yd
+              // position: "relative"
               // display: "flex",
               // justifyContent: "center"
             }}
