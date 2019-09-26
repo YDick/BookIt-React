@@ -245,6 +245,7 @@ export default class BookClubForm extends Component {
 
         
         </Form>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
       </div>
     );
   }

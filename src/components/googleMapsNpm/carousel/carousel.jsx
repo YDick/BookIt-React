@@ -69,19 +69,11 @@ class clubCarousel extends Component {
 
                       style={{ color: "blue"}}
 
-<<<<<<< HEAD
-                  
-=======
->>>>>>> ee2e3fe290e1e14111d20d1db4c880d0d291ee5a
                       to={"/bookclub/" + club.id}
                     >
                       <h3>{club.name}</h3>
                     </Link>
-<<<<<<< HEAD
-=======
 
-           
->>>>>>> ee2e3fe290e1e14111d20d1db4c880d0d291ee5a
                     <h5 style={{ color: "blue" }}>
 
                       {" "}

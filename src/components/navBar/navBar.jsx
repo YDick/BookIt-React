@@ -67,6 +67,11 @@ class NavBar extends React.Component {
                 <Nav.Link active={false}>Clubs</Nav.Link>
               </LinkContainer>
             )}
+            {sessionStorage.JWT && (
+              <LinkContainer to="/create/bookclub">
+                <Nav.Link active={false}>Create Club</Nav.Link>
+              </LinkContainer>
+            )}
 
             {sessionStorage.JWT && (
               <LinkContainer to="/Email">
