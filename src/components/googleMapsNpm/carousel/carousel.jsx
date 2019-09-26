@@ -74,7 +74,6 @@ class clubCarousel extends Component {
                       <h3>{club.name}</h3>
                     </Link>
 
-           
                     <h5 style={{ color: "blue" }}>
 
                       {" "}
