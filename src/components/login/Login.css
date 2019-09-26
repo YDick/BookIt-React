@@ -1,6 +1,6 @@
 @media all and (min-width: 480px) {
   html {
-    height: 110%;
+    /* height: 70%; */
   }
     .Login {
       padding: 60px 0;
