@@ -5,23 +5,23 @@ export default function Footer()  {
 
     return(
         <React.Fragment>
-            <footer class="site-footer">
-                    <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6">
+            <footer className="site-footer">
+                    <div className="container">
+                    <div className="row">
+                        <div className="col-sm-12 col-md-6">
                         <h6>Contact</h6>
-                        <ul class="footer-links">
+                        <ul className="footer-links">
                             <li>TheBookItApp@gmail.com</li>
                         </ul>
                         </div>
             
-                        <div class="col-xs-6 col-md-3">
+                        <div className="col-xs-6 col-md-3">
 
                         </div>
             
-                        <div class="col-xs-6 col-md-3">
+                        <div className="col-xs-6 col-md-3">
                         <h6>Quick Links</h6>
-                        <ul class="footer-links">
+                        <ul className="footer-links">
                             <li><a href="/aboutus/">About Us</a></li>
                             <li><a href="/home/">Home</a></li>
                         </ul>
@@ -29,15 +29,15 @@ export default function Footer()  {
                     </div>
                     <hr />
                     </div>
-                    <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 col-sm-6 col-xs-12">
-                        <p class="copyright-text">Designed by Yehudis Dick, Yudi Rosenzwieg and Larisa Granat
+                    <div className="container">
+                    <div className="row">
+                        <div className="col-md-8 col-sm-6 col-xs-12">
+                        <p className="copyright-text">Designed by Yehudis Dick, Yudi Rosenzwieg and Larisa Granat
                         </p>
                         </div>
             
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                        {/* <ul class="social-icons">
+                        <div className="col-md-4 col-sm-6 col-xs-12">
+                        {/* <ul className="social-icons">
                             <li><a class="dribbble" href="https://www.instagram.com/ashreinutoronto/?hl=en" target="_blank"><i class="fa fa-instagram"></i></a></li>
                             <li><a class="linkedin" href="https://www.instagram.com/ashreinutoronto/?hl=en"><i class="fa fa-linkedin"></i></a></li>   
                         </ul> */}
