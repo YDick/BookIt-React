@@ -5,7 +5,10 @@
   background-attachment: fixed;
   background-size: cover;
   min-height: 100%;
-  /* width: 100%; */
+  width: 100%;
+
+  /* remove bottom scrollbar on clubs page */
+  overflow-x: hidden;
 
   margin: 0;
 
