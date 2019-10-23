@@ -91,7 +91,7 @@ class GoogleMaps extends Component {
           loginAddress.country
         ) {
           const googleMapsClient = require("@google/maps").createClient({
-            key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
+            key: "AIzaSyD-loOAFIiUF2tzpi5SzA330-5TxzMBSjA",
             Promise: Promise
           });
           googleMapsClient
@@ -137,7 +137,7 @@ class GoogleMaps extends Component {
 
         bookClubs.forEach(club => {
           const googleMapsClient = require("@google/maps").createClient({
-            key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
+            key: "AIzaSyD-loOAFIiUF2tzpi5SzA330-5TxzMBSjA",
             Promise: Promise
           });
           console.log(
@@ -194,7 +194,7 @@ class GoogleMaps extends Component {
 
   submitCP = () => {
     const googleMapsClient = require("@google/maps").createClient({
-      key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
+      key: "AIzaSyD-loOAFIiUF2tzpi5SzA330-5TxzMBSjA",
       Promise: Promise
     });
     googleMapsClient
@@ -223,7 +223,7 @@ class GoogleMaps extends Component {
     console.log();
 
     const googleMapsClient = require("@google/maps").createClient({
-      key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
+      key: "AIzaSyD-loOAFIiUF2tzpi5SzA330-5TxzMBSjA",
       Promise: Promise
     });
     googleMapsClient
@@ -384,6 +384,6 @@ class GoogleMaps extends Component {
   }
 }
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU"
+  apiKey: "AIzaSyD-loOAFIiUF2tzpi5SzA330-5TxzMBSjA"
 })(GoogleMaps);
   
