@@ -26,6 +26,7 @@ class BookClub extends React.Component {
     getBookClub(this.props.match.params.id)
       .then(e => e.json())
       .then(e => {
+
         // const googleMapsClient = require("@google/maps").createClient({
         //   key: "API KEY",
         //   Promise: Promise
@@ -47,7 +48,7 @@ class BookClub extends React.Component {
                     Luser
                   });
               },
-              100
+              300
           );
           // });
       });
@@ -165,6 +166,7 @@ class BookClub extends React.Component {
     return <div>{message}</div>;
   }
 }
+
 
 export default GoogleApiWrapper({
   apiKey: "API KEY"
