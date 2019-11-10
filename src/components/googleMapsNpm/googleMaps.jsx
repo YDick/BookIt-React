@@ -11,7 +11,10 @@ import Carousel from "./carousel/carousel";
 import CpForm from "../mapForm/canadaPost";
 import { Link, BrowserRouter } from "react-router-dom";
 
+var APIKEY = null;
+
 class GoogleMaps extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -97,7 +100,7 @@ class GoogleMaps extends Component {
           loginAddress.country
         ) {
           const googleMapsClient = require("@google/maps").createClient({
-            key: "API KEY",
+            key: APIKEY,
             Promise: Promise
           });
           googleMapsClient
@@ -143,7 +146,7 @@ class GoogleMaps extends Component {
 
         bookClubs.forEach(club => {
           const googleMapsClient = require("@google/maps").createClient({
-            key: "API KEY",
+            key: APIKEY,
             Promise: Promise
           });
           console.log(
@@ -200,7 +203,7 @@ class GoogleMaps extends Component {
 
   submitCP = () => {
     const googleMapsClient = require("@google/maps").createClient({
-      key: "API KEY",
+      key: APIKEY,
       Promise: Promise
     });
     googleMapsClient
@@ -231,7 +234,7 @@ class GoogleMaps extends Component {
     console.log();
 
     const googleMapsClient = require("@google/maps").createClient({
-      key: "API KEY",
+      key: APIKEY,
       Promise: Promise
     });
     googleMapsClient
@@ -385,5 +388,5 @@ class GoogleMaps extends Component {
   }
 }
 export default GoogleApiWrapper({
-  apiKey: "API KEY"
+  apiKey: APIKEY,
 })(GoogleMaps);
