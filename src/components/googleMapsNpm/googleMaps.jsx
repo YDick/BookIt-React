@@ -1,11 +1,20 @@
 import React, { Component } from "react";
-import { Map, InfoWindow, Marker, GoogleApiWrapper, Polygon } from "google-maps-react";
+import {
+  Map,
+  InfoWindow,
+  Marker,
+  GoogleApiWrapper,
+  Polygon
+} from "google-maps-react";
 import Form from "../mapForm/form";
 import Carousel from "./carousel/carousel";
 import CpForm from "../mapForm/canadaPost";
 import { Link, BrowserRouter } from "react-router-dom";
 
+var APIKEY = null;
+
 class GoogleMaps extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -91,7 +100,7 @@ class GoogleMaps extends Component {
           loginAddress.country
         ) {
           const googleMapsClient = require("@google/maps").createClient({
-            key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
+            key: APIKEY,
             Promise: Promise
           });
           googleMapsClient
@@ -136,7 +145,7 @@ class GoogleMaps extends Component {
 
         bookClubs.forEach(club => {
           const googleMapsClient = require("@google/maps").createClient({
-            key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
+            key: APIKEY,
             Promise: Promise
           });
           console.log(
@@ -193,7 +202,7 @@ class GoogleMaps extends Component {
 
   submitCP = () => {
     const googleMapsClient = require("@google/maps").createClient({
-      key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
+      key: APIKEY,
       Promise: Promise
     });
     googleMapsClient
@@ -208,8 +217,10 @@ class GoogleMaps extends Component {
             lat: response.json.results[0].geometry.location.lat,
             lng: response.json.results[0].geometry.location.lng,
             show: false,
-            currentLocation: {lat: response.json.results[0].geometry.location.lat,
-              lng: response.json.results[0].geometry.location.lng} 
+            currentLocation: {
+              lat: response.json.results[0].geometry.location.lat,
+              lng: response.json.results[0].geometry.location.lng
+            }
           },
           () => {
             console.log("State::::", this.state.lat);
@@ -222,7 +233,7 @@ class GoogleMaps extends Component {
     console.log();
 
     const googleMapsClient = require("@google/maps").createClient({
-      key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
+      key: APIKEY,
       Promise: Promise
     });
     googleMapsClient
@@ -247,7 +258,6 @@ class GoogleMaps extends Component {
   };
 
   render() {
-   
     console.log(this.state.selectedPlace, "selected place!!");
     return (
       <div
@@ -276,9 +286,6 @@ class GoogleMaps extends Component {
         {this.state.lat === null && <h1>Loading...</h1>}
         {this.state.lat != null && (
           <Map
-
-         
-
             onClick={this.onMapClick}
             google={this.props.google}
             initialCenter={{
@@ -306,9 +313,7 @@ class GoogleMaps extends Component {
               // justifyContent: "center"
             }}
             zoom={15}
-            
           >
-            
             {this.state.markers.map((e, i) => (
               <Marker
                 id={e.bookClub.id}
@@ -321,7 +326,7 @@ class GoogleMaps extends Component {
             ))}
 
             <Marker
-              style={{ color: "blue", backgroundColor: 'black' }}
+              style={{ color: "blue", backgroundColor: "black" }}
               onClick={this.onMarkerClick}
               icon={"http://maps.google.com/mapfiles/ms/icons/blue.png"}
               position={{
@@ -376,11 +381,11 @@ class GoogleMaps extends Component {
         <br />
         <br />
         <br />
-  
+        <br />
       </div>
     );
   }
 }
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU"
+  apiKey: APIKEY,
 })(GoogleMaps);

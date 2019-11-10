@@ -19,30 +19,38 @@ class BookClub extends React.Component {
         .then(t => {
           console.log(t);
           Luser = t.current_user;
+        console.log(Luser,'luser')
         });
     }
 
     getBookClub(this.props.match.params.id)
       .then(e => e.json())
       .then(e => {
-        const googleMapsClient = require("@google/maps").createClient({
-          key: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU",
-          Promise: Promise
-        });
 
-        googleMapsClient
-          .geocode({
-            address: `${e.book_club.address.address_line1} ${e.book_club.address.city}`
-          })
-          .asPromise()
-          .then(response => {
-            this.setState({
-              data: e,
-              lat: response.json.results[0].geometry.location.lat,
-              lng: response.json.results[0].geometry.location.lng,
-              Luser
-            });
-          });
+        // const googleMapsClient = require("@google/maps").createClient({
+        //   key: "API KEY",
+        //   Promise: Promise
+        // });
+
+        // googleMapsClient
+        //   .geocode({
+        //     address: `${e.book_club.address.address_line1} ${e.book_club.address.city}`
+        //   })
+        //   .asPromise()
+          // .then(response => {
+            setTimeout(
+              () => {
+                  this.setState({position: 1});
+                  this.setState({
+                    data: e,
+                    // lat: response.json.results[0].geometry.location.lat,
+                    // lng: response.json.results[0].geometry.location.lng,
+                    Luser
+                  });
+              },
+              300
+          );
+          // });
       });
   }
 
@@ -59,11 +67,15 @@ class BookClub extends React.Component {
           <ListGroup.Item key={i}>{e.name}</ListGroup.Item>
         ));
 
-        this.state.data.users.forEach(element => {
-          if (element.email === this.state.Luser.email) {
-            btn = true;
-          }
-        });
+
+ 
+
+
+         this.state.data.users.forEach(element => {
+           if (element.email === this.state.Luser.email) {
+             btn = true;
+           }
+         });
       }
 
       if (this.state.data.admins.length > 0) {
@@ -107,7 +119,7 @@ class BookClub extends React.Component {
             </Card.Footer>
           </Card>
 
-          <Map 
+          {/* <Map 
             onClick={this.onMapClick}
             google={this.props.google}
             initialCenter={{
@@ -143,8 +155,8 @@ class BookClub extends React.Component {
               title={this.state.data.book_club.name}
               name={"hi"}
             />
-          </Map>
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          </Map> */}
+         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         </React.Fragment>
       );
     } else {
@@ -155,6 +167,7 @@ class BookClub extends React.Component {
   }
 }
 
+
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyC9YcNajcT4z5-USnDY-znyaf146i27YOU"
+  apiKey: "API KEY"
 })(BookClub);

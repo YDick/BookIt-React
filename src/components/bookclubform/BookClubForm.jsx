@@ -101,6 +101,7 @@ export default class BookClubForm extends Component {
   render() {
     return (
       <div className="BookClubForm">
+        <br/>
         <h1>Create a new book club!</h1>
 
         <Form onSubmit={this.handleSubmit}>
@@ -245,7 +246,7 @@ export default class BookClubForm extends Component {
 
         
         </Form>
-        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/>
       </div>
     );
   }
