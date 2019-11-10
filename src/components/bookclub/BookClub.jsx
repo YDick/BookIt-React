@@ -3,6 +3,8 @@ import { getBookClub, currentUser } from "../../services/webService";
 import { Card, Button, ListGroup } from "react-bootstrap";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 
+var APIKEY = "AIzaSyCUjSgRxJWDynVbGwqyRTKNuaBW3o6FR40";
+
 class BookClub extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,7 @@ class BookClub extends React.Component {
       .then(e => {
 
         // const googleMapsClient = require("@google/maps").createClient({
-        //   key: "API KEY",
+        //   key: APIKEY,
         //   Promise: Promise
         // });
 
@@ -169,5 +171,5 @@ class BookClub extends React.Component {
 
 
 export default GoogleApiWrapper({
-  apiKey: "API KEY"
+  apiKey: APIKEY
 })(BookClub);
