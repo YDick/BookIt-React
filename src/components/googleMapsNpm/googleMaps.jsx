@@ -11,7 +11,7 @@ import Carousel from "./carousel/carousel";
 import CpForm from "../mapForm/canadaPost";
 import { Link, BrowserRouter } from "react-router-dom";
 
-var APIKEY = null;
+var APIKEY = "AIzaSyBqWTSSRF2L_vc4kyrykvQ3ss_l6QQbyII";
 
 class GoogleMaps extends Component {
 
