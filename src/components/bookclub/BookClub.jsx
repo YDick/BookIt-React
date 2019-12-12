@@ -3,7 +3,7 @@ import { getBookClub, currentUser } from "../../services/webService";
 import { Card, Button, ListGroup } from "react-bootstrap";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 
-var APIKEY = "AIzaSyCUjSgRxJWDynVbGwqyRTKNuaBW3o6FR40";
+var APIKEY = "AIzaSyBqWTSSRF2L_vc4kyrykvQ3ss_l6QQbyII";
 
 class BookClub extends React.Component {
   constructor(props) {
