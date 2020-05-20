@@ -29,7 +29,7 @@ export default class Email extends React.Component {
       handleSubmit = event => {
         event.preventDefault();
 
-        fetch("http://book-it.herokuapp.com/api/v1/invite",{
+        fetch("https://book-it.herokuapp.com/api/v1/invite",{
             method: 'POST',
             body:
             JSON.stringify(
