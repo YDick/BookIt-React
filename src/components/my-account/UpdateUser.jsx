@@ -107,7 +107,7 @@ export default class UpdateUser extends Component {
     validateForm() {
         return (
           this.state.name.length > 0 &&
-          // this.state.password.length > 6 &&
+          this.state.password.length > 6 &&
           this.state.password === this.state.confirmPassword
         );
       }
