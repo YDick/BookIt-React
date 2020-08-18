@@ -24,8 +24,6 @@ export default class UpdateUser extends Component {
 
 
       componentDidMount() {
-        console.log('componectDidMount')
-
         // fetch the *current user* for My Account
         fetch('https://book-it.herokuapp.com/api/v1/current', {
             headers:{
