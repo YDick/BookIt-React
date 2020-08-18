@@ -48,23 +48,7 @@ export default class Signup extends Component {
         var postal_code = this.state.postal_code;
         var country = this.state.country;
 
-        console.log(
-          JSON.stringify(
-            {"user":  {               
-              "name": this.state.name,
-              "email": this.state.email,
-              "password": this.state.password,
-              "address": {
-                address_line1: address_line1,
-                city: city,
-                province: province,
-                postal_code: postal_code,
-                country: country
-              }
-                }
-              }
-          )
-        )
+       
 
         fetch("https://book-it.herokuapp.com/api/v1/users",{
             method: 'POST',
