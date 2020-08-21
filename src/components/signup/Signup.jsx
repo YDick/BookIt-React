@@ -7,7 +7,7 @@ import '../login/Login.css'
 // https://flaviocopes.com/react-forms/
 
 
-export default class Signup extends Component {
+class Signup extends Component {
     constructor(props) {
         super(props);
     
@@ -50,61 +50,59 @@ export default class Signup extends Component {
 
        
 
-        fetch("https://book-it.herokuapp.com/api/v1/users",{
-            method: 'POST',
-            body:
-            JSON.stringify(
-              {"user":  {               
-                "name": this.state.name,
-                "email": this.state.email,
-                "password": this.state.password,
-                "address": {
-                  address_line1: address_line1,
-                  city: city,
-                  province: province,
-                  postal_code: postal_code,
-                  country: country
-                }
-                  }
-                }
-            ),
-            headers:{
-              'Content-Type': 'application/json'
+        fetch("https://book-it.herokuapp.com/api/v1/users", {
+          method: 'POST',
+          body: JSON.stringify({
+            "user": {
+              "name": this.state.name,
+              "email": this.state.email,
+              "password": this.state.password,
+              "address": {
+                address_line1: address_line1,
+                city: city,
+                province: province,
+                postal_code: postal_code,
+                country: country
+              }
             }
-          }).then(e=>e.json())
-          .then(data=> {
-              console.log('Signed up!:::', data);
-              // eslint-disable-next-line eqeqeq
-              if(data.email == 'has already been taken'){
-                alert('Email already in use')
-              }else{
-                console.log('loggin in')
-                fetch("https://book-it.herokuapp.com/api/v1/user_token",{
-                    method: 'POST',
-                    body:
-                    JSON.stringify(
-                    {"auth": {
-                      "email": this.state.email.toLowerCase(),
-                      "password": this.state.password
-                    }
-                    }
-                    ),
-                    headers:{
-                      'Content-Type': 'application/json'
-                    }
-                  }).then(e=>e.json())
-                  .then(data=> {
-                      console.log('logged in!:', data);
-                      sessionStorage.setItem("JWT", data.jwt);
-                      this.props.logIn();
-                      this.props.history.push(`/`);
-                    })
-                  .catch(error=>{
-                    console.error('Error:::', error);
-                  });              }
-            })
-          .catch(error=>console.error('Error:', error));
-        }
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(e => e.json())
+        .then(data => {
+          console.log('Signed up!:::', data);
+          // eslint-disable-next-line eqeqeq
+          if (data.email == 'has already been taken') {
+            alert('Email already in use')
+          } else {
+            console.log('loggin in')
+            fetch("https://book-it.herokuapp.com/api/v1/user_token", {
+                method: 'POST',
+                body: JSON.stringify({
+                  "auth": {
+                    "email": this.state.email.toLowerCase(),
+                    "password": this.state.password
+                  }
+                }),
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              }).then(e => e.json())
+              .then(data => {
+                console.log('logged in!:', data);
+                sessionStorage.setItem("JWT", data.jwt);
+                this.props.logIn();
+                this.props.history.push(`/`);
+              })
+              .catch(error => {
+                console.error('Error:::', error);
+              });
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+  
 
      
 
@@ -229,3 +227,5 @@ export default class Signup extends Component {
     );
     }
 }
+
+export default Signup;
